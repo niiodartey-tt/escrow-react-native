@@ -1,0 +1,422 @@
+import { View, Text, Image, TextInput, Pressable } from 'react-native';
+import { motion } from "motion/react";
+import { Bell, Layers, CheckCircle, AlertTriangle, Award, Filter, Search, X, Shield, AlertCircle } from "lucide-react";
+import { Button } from "./ui/button";
+import { Card } from "./ui/card";
+import { Input } from "./ui/input";
+import { Badge } from "./ui/badge";
+import { useState } from "react";
+import { useTheme } from "./ThemeContext";
+import { useNotificationService } from "./NotificationService";
+
+interface DashboardProps {
+  onNavigate: (screen: string, data?: any) => void;
+  kycStatus?: string;
+}
+
+export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps) {
+  const { isDark } = useTheme();
+  const { notifications, transactions } = useNotificationService();
+  const [showFilters, setShowFilters] = useState(false);
+  const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const unreadNotifications = notifications.filter(n => !n.read).length;
+  
+  const stats = [
+    { label: "Active", value: String(transactions.filter(t => t.status === "In Escrow" || t.status === "In Progress").length), icon: Layers, color: "text-blue-600", bgColor: "bg-blue-50 dark:bg-blue-900/20" },
+    { label: "Completed", value: String(transactions.filter(t => t.status === "Completed").length), icon: CheckCircle, color: "text-green-600", bgColor: "bg-green-50 dark:bg-green-900/20" },
+    { label: "Dispute", value: "1", icon: AlertTriangle, color: "text-orange-600", bgColor: "bg-orange-50 dark:bg-orange-900/20" },
+    { label: "Total", value: String(transactions.length), icon: Award, color: "text-purple-600", bgColor: "bg-purple-50 dark:bg-purple-900/20" },
+  ];
+
+  const allTransactions = [
+    { 
+      id: "ESC-45823", 
+      date: "Oct 28, 2025", 
+      amount: "850.00", 
+      name: "MacBook Pro M3", 
+      counterparty: "Sarah Johnson",
+      status: "In Escrow", 
+      role: "buyer",
+      category: "Physical Product",
+      description: "Brand new MacBook Pro 14-inch with M3 chip"
+    },
+    { 
+      id: "ESC-45822", 
+      date: "Oct 27, 2025", 
+      amount: "1,200.00", 
+      name: "Web Development Service", 
+      counterparty: "James Miller",
+      status: "Completed", 
+      role: "seller",
+      category: "Service",
+      description: "Complete website redesign and development"
+    },
+    { 
+      id: "ESC-45821", 
+      date: "Oct 26, 2025", 
+      amount: "450.00", 
+      name: "Gaming Console Bundle", 
+      counterparty: "Mike Davis",
+      status: "In Progress", 
+      role: "seller",
+      category: "Physical Product",
+      description: "PlayStation 5 with 2 controllers and 3 games"
+    },
+    { 
+      id: "ESC-45820", 
+      date: "Oct 25, 2025", 
+      amount: "2,500.00", 
+      name: "Graphic Design Package", 
+      counterparty: "Emma Wilson",
+      status: "Completed", 
+      role: "buyer",
+      category: "Service",
+      description: "Complete branding package with logo design"
+    },
+    { 
+      id: "ESC-45819", 
+      date: "Oct 24, 2025", 
+      amount: "680.00", 
+      name: "Camera Equipment", 
+      counterparty: "Robert Chen",
+      status: "Disputed", 
+      role: "buyer",
+      category: "Physical Product",
+      description: "Canon DSLR camera with lenses"
+    }
+  ];
+  
+  const filteredTransactions = allTransactions.filter((transaction) => {
+    const matchesSearch = 
+      transaction.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      transaction.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      transaction.counterparty.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesFilter = 
+      filterStatus === "all" || 
+      transaction.status.toLowerCase() === filterStatus.toLowerCase();
+    
+    return matchesSearch && matchesFilter;
+  });
+  
+  const recentTransactions = filteredTransactions.slice(0, 3);
+  
+  const filterOptions = [
+    { value: "all", label: "All" },
+    { value: "in escrow", label: "In Escrow" },
+    { value: "completed", label: "Completed" },
+    { value: "in progress", label: "In Progress" },
+    { value: "disputed", label: "Disputed" },
+  ];
+  
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "completed":
+        return "bg-green-100 text-green-700 border-green-200";
+      case "in escrow":
+        return "bg-blue-100 text-blue-700 border-blue-200";
+      case "in progress":
+        return "bg-yellow-100 text-yellow-700 border-yellow-200";
+      case "disputed":
+        return "bg-red-100 text-red-700 border-red-200";
+      default:
+        return "bg-gray-100 text-gray-700 border-gray-200";
+    }
+  };
+
+  return (
+    <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+      {/* Header with Wallet Balance */}
+      <View style="relative">
+        <View
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          style={`p-4 sm:p-6 pb-20 sm:pb-24 text-white ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'}`}
+        >
+          <View style="flex justify-between items-start mb-6 sm:mb-8">
+            <View>
+              <Text style="text-white/80 text-xs sm:text-sm mb-1">Welcome back,</Text>
+              <Text style="text-xl sm:text-2xl">John Doe</Text>
+            </View>
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onPress={() => onNavigate("notifications")}
+              style="relative p-2 hover:bg-white/10"
+            >
+              <Bell style="w-5 h-5 sm:w-6 sm:h-6" />
+              {unreadNotifications > 0 && (
+                <View
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 500 }}
+                  style="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
+                >
+                  {unreadNotifications}
+                </View>
+              )}
+            </motion.button>
+          </View>
+
+          <View style="grid grid-cols-2 gap-3 sm:gap-4">
+            <View>
+              <Text style="text-white/80 text-xs sm:text-sm mb-1">Wallet Balance</Text>
+              <View 
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                style="text-xl sm:text-2xl"
+              >
+                $4,500.00
+              </View>
+            </View>
+            <View>
+              <Text style="text-white/80 text-xs sm:text-sm mb-1">Escrow Balance</Text>
+              <View style="text-xl sm:text-2xl">$200.00</View>
+            </View>
+          </View>
+        </View>
+
+        {/* Stats Grid - Overlay */}
+        <View style="px-4 sm:px-6 -mt-14 sm:-mt-16 relative z-10 rounded-[0px]">
+          <View 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            style="bg-white shadow-lg p-5"
+          >
+            <View style="grid grid-cols-2 gap-4">
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                const isBottomRow = index >= 2;
+                return (
+                  <View
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.05, type: "spring" }}
+                    whileTap={{ scale: 0.95 }}
+                    style={`flex items-center gap-3 p-3 hover:bg-gray-50 transition-colors ${
+                      isBottomRow ? 'border-t border-gray-200 pt-5' : ''
+                    }`}
+                  >
+                    <View style={`p-2 ${stat.bgColor}`}>
+                      <Icon style={`w-5 h-5 ${stat.color}`} />
+                    </View>
+                    <View>
+                      <View style="text-sm text-gray-500">{stat.label}</View>
+                      <View style="text-xl">{stat.value}</View>
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+        </View>
+      </View>
+
+      {/* KYC Banner */}
+      {kycStatus !== "verified" && (
+        <View
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          style="px-6 mt-6"
+        >
+          <Card style={`p-4 border-2 cursor-pointer ${
+            kycStatus === "pending" 
+              ? (isDark ? 'bg-yellow-900/20 border-yellow-700' : 'bg-yellow-50 border-yellow-200')
+              : kycStatus === "under-review"
+              ? (isDark ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-50 border-blue-200')
+              : (isDark ? 'bg-red-900/20 border-red-700' : 'bg-red-50 border-red-200')
+          }`}
+          onPress={() => kycStatus === "pending" && onNavigate("kyc-verification")}
+          >
+            <View style="flex gap-3">
+              {kycStatus === "pending" ? (
+                <AlertCircle style="w-5 h-5 text-yellow-600 dark:text-yellow-500 mt-0.5 flex-shrink-0" />
+              ) : kycStatus === "under-review" ? (
+                <Shield style="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+              ) : (
+                <AlertTriangle style="w-5 h-5 text-red-600 dark:text-red-500 mt-0.5 flex-shrink-0" />
+              )}
+              <View style="flex-1">
+                <Text style={`mb-1 ${
+                  kycStatus === "pending" 
+                    ? (isDark ? 'text-yellow-200' : 'text-yellow-800')
+                    : kycStatus === "under-review"
+                    ? (isDark ? 'text-blue-200' : 'text-blue-800')
+                    : (isDark ? 'text-red-200' : 'text-red-800')
+                }`}>
+                  {kycStatus === "pending" && "Complete KYC Verification"}
+                  {kycStatus === "under-review" && "KYC Under Review"}
+                  {kycStatus === "rejected" && "KYC Verification Failed"}
+                </Text>
+                <Text style={`text-sm ${
+                  kycStatus === "pending" 
+                    ? (isDark ? 'text-yellow-300' : 'text-yellow-700')
+                    : kycStatus === "under-review"
+                    ? (isDark ? 'text-blue-300' : 'text-blue-700')
+                    : (isDark ? 'text-red-300' : 'text-red-700')
+                }`}>
+                  {kycStatus === "pending" && "Verify your identity to unlock all features and start transacting"}
+                  {kycStatus === "under-review" && "Your verification is being reviewed. This usually takes 24-48 hours"}
+                  {kycStatus === "rejected" && "Please contact support or resubmit your verification"}
+                </Text>
+                {kycStatus === "pending" && (
+                  <Badge style="mt-2 bg-yellow-600 hover:bg-yellow-700 text-white border-0">
+                    Complete Now
+                  </Badge>
+                )}
+              </View>
+            </View>
+          </Card>
+        </View>
+      )}
+
+      {/* Action Buttons */}
+      <View style="px-6 mb-8 mt-6 flex gap-3">
+        <View whileTap={{ scale: 0.98 }} style="flex-1">
+          <Button
+            onPress={() => onNavigate("wallet")}
+            style="w-full bg-[#043b69] hover:bg-[#032d51] shadow-lg h-12"
+          >
+            + Top up wallet
+          </Button>
+        </View>
+        <View whileTap={{ scale: 0.98 }} style="flex-1">
+          <Button
+            onPress={() => onNavigate("withdraw")}
+            style="w-full bg-black hover:bg-gray-900 text-white shadow-lg h-12"
+          >
+            Withdraw
+          </Button>
+        </View>
+      </View>
+
+      {/* Recent Transactions */}
+      <View style="px-6 pb-6">
+        <View style="flex justify-between items-center mb-4">
+          <View>
+            <Text style="uppercase tracking-wide text-sm">Recent Transactions</Text>
+            <Text style="text-xs text-gray-500">October</Text>
+          </View>
+          <View style="flex items-center gap-3">
+            <motion.button 
+              whileTap={{ scale: 0.9 }}
+              onPress={() => setShowFilters(!showFilters)}
+              style={`p-2 hover:bg-gray-100 ${showFilters ? "bg-gray-100" : ""}`}
+            >
+              <Filter style="w-5 h-5 text-gray-600" />
+            </motion.button>
+            <TouchableOpacity 
+              onPress={() => onNavigate("transaction-history")}
+              style="text-[#043b69] text-sm hover:underline"
+            >
+              See all
+            </TouchableOpacity>
+          </View>
+        </View>
+        
+        {/* Search and Filter */}
+        {showFilters && (
+          <View
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            style="mb-4 space-y-3"
+          >
+            <View style="relative">
+              <Search style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Input
+                placeholder="Search transactions..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style="pl-10 pr-10 bg-white"
+              />
+              {searchQuery && (
+                <TouchableOpacity
+                  onPress={() => setSearchQuery("")}
+                  style="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <X style="w-5 h-5" />
+                </TouchableOpacity>
+              )}
+            </View>
+            
+            <View style="flex gap-2 flex-wrap">
+              {filterOptions.map((option) => (
+                <motion.button
+                  key={option.value}
+                  whileTap={{ scale: 0.95 }}
+                  onPress={() => setFilterStatus(option.value)}
+                  style={`px-3 py-1.5 text-sm transition-colors ${
+                    filterStatus === option.value
+                      ? "bg-[#043b69] text-white"
+                      : "bg-white text-gray-700 border hover:bg-gray-50"
+                  }`}
+                >
+                  {option.label}
+                </motion.button>
+              ))}
+            </View>
+          </View>
+        )}
+
+        <View style="space-y-4">
+          {recentTransactions.length === 0 ? (
+            <View
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              style="text-center py-8"
+            >
+              <Text style="text-gray-500">No transactions found</Text>
+              <Text style="text-sm text-gray-400">Try adjusting your filters</Text>
+            </View>
+          ) : (
+            recentTransactions.map((transaction, index) => (
+              <View
+                key={transaction.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Card style="p-4 shadow-sm hover:shadow-md transition-all cursor-pointer" onPress={() => onNavigate("transaction-details", transaction)}>
+                  <View style="flex justify-between items-start mb-3">
+                    <View>
+                      <Text style="text-xs text-gray-500 mb-1">{transaction.id}</Text>
+                      <Text style="text-xs text-gray-400">{transaction.date}</Text>
+                    </View>
+                    <Badge style={`${getStatusColor(transaction.status)} border text-xs`}>
+                      {transaction.status}
+                    </Badge>
+                  </View>
+                  <View style="flex justify-between items-end">
+                    <View>
+                      <View style="mb-2">${transaction.amount}</View>
+                      <Text style="text-sm text-gray-600 mb-1">{transaction.name}</Text>
+                      <Text style="text-xs text-gray-400">
+                        {transaction.role === "buyer" ? "Seller: " : "Buyer: "}
+                        {transaction.counterparty}
+                      </Text>
+                    </View>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onPress={(e) => {
+                        e.stopPropagation();
+                        onNavigate("transaction-details", transaction);
+                      }}
+                      style="text-[#043b69] border-[#043b69] hover:bg-blue-50"
+                    >
+                      Details
+                    </Button>
+                  </View>
+                </Card>
+              </View>
+            ))
+          )}
+        </View>
+      </View>
+    </View>
+  );
+}

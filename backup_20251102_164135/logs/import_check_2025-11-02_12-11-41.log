@@ -1,0 +1,32 @@
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/accordion.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Accordion.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/avatar.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Avatar.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/badge.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Badge.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/calendar.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Calendar.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/card.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Card.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/chart.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Chart.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/checkbox.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Checkbox.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'
+error TS1149: File name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/input.tsx' differs from already included file name '/home/niiodarteytt/Projects/escrow-react-native/escrow-react-native/src/components/ui_components/Input.tsx' only in casing.
+  The file is in the program because:
+    Matched by default include pattern '**/*'
+    Matched by default include pattern '**/*'

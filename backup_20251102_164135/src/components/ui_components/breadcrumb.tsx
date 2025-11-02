@@ -1,0 +1,110 @@
+import { View, Text, Image, TextInput, Pressable } from 'react-native';
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot@1.1.2";
+import { ChevronRight, MoreHorizontal } from "lucide-react@0.487.0";
+
+import { cn } from "./utils";
+
+function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
+  return <View aria-label="breadcrumb" data-slot="breadcrumb" {...props} />;
+}
+
+function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
+  return (
+    <ol
+      data-slot="breadcrumb-list"
+      style={cn(
+        "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
+  return (
+    <Text
+      data-slot="breadcrumb-item"
+      style={cn("inline-flex items-center gap-1.5", className)}
+      {...props}
+    />
+  );
+}
+
+function BreadcrumbLink({
+  asChild,
+  className,
+  ...props
+}: React.ComponentProps<"a"> & {
+  asChild?: boolean;
+}) {
+  const Comp = asChild ? Slot : "a";
+
+  return (
+    <Comp
+      data-slot="breadcrumb-link"
+      style={cn("hover:text-foreground transition-colors", className)}
+      {...props}
+    />
+  );
+}
+
+function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <Text
+      data-slot="breadcrumb-page"
+      role="link"
+      aria-disabled="true"
+      aria-current="page"
+      style={cn("text-foreground font-normal", className)}
+      {...props}
+    />
+  );
+}
+
+function BreadcrumbSeparator({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"li">) {
+  return (
+    <Text
+      data-slot="breadcrumb-separator"
+      role="presentation"
+      aria-hidden="true"
+      style={cn("[&>svg]:size-3.5", className)}
+      {...props}
+    >
+      {children ?? <ChevronRight />}
+    </Text>
+  );
+}
+
+function BreadcrumbEllipsis({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <Text
+      data-slot="breadcrumb-ellipsis"
+      role="presentation"
+      aria-hidden="true"
+      style={cn("flex size-9 items-center justify-center", className)}
+      {...props}
+    >
+      <MoreHorizontal style="size-4" />
+      <Text style="sr-only">More</Text>
+    </Text>
+  );
+}
+
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+};
