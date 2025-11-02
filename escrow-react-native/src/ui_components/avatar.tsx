@@ -1,0 +1,54 @@
+import { View, Text, Image, TextInput, Pressable } from 'react-native';
+"use client";
+
+import * as React from "react";
+import * as AvatarPrimitive from "@radix-ui/react-avatar@1.1.3";
+
+import { cn } from "./utils";
+
+function Avatar({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Root>) {
+  return (
+    <AvatarPrimitive.Root
+      data-slot="avatar"
+      style={cn(
+        "relative flex size-10 shrink-0 overflow-hidden rounded-full",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function AvatarImage({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+  return (
+    <AvatarPrimitive.Image
+      data-slot="avatar-image"
+      style={cn("aspect-square size-full", className)}
+      {...props}
+    />
+  );
+}
+
+function AvatarFallback({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
+  return (
+    <AvatarPrimitive.Fallback
+      data-slot="avatar-fallback"
+      style={cn(
+        "bg-muted flex size-full items-center justify-center rounded-full",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export { Avatar, AvatarImage, AvatarFallback };
