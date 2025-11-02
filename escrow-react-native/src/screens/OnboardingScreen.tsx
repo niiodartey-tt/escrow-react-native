@@ -45,12 +45,12 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
   };
 
   return (
-    <div style="h-screen bg-[#F9FAFB] dark:bg-gray-900 flex flex-col">
+    <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 flex flex-col">
       {/* Skip Button */}
-      <div style="flex justify-end p-4 sm:p-6">
+      <View style="flex justify-end p-4 sm:p-6">
         <motion.button
           whileTap={{ scale: 0.95 }}
-          onClick={handleSkip}
+          onPress={handleSkip}
           style="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-sm sm:text-base"
         >
           Skip
@@ -58,7 +58,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
       </View>
 
       {/* Content */}
-      <div style="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-8">
+      <View style="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -75,7 +75,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
               transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
               style="mb-6 sm:mb-8"
             >
-              <div
+              <View
                 style="w-20 h-20 sm:w-24 sm:h-24 mx-auto flex items-center justify-center"
                 style={{ backgroundColor: `${slides[currentSlide].color}20` }}
               >
@@ -115,10 +115,10 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
       </View>
 
       {/* Navigation */}
-      <div style="p-4 sm:p-6 pb-6 sm:pb-8">
-        <div style="max-w-md mx-auto">
+      <View style="p-4 sm:p-6 pb-6 sm:pb-8">
+        <View style="max-w-md mx-auto">
           {/* Dots */}
-          <div style="flex justify-center gap-2 mb-5 sm:mb-6">
+          <View style="flex justify-center gap-2 mb-5 sm:mb-6">
             {slides.map((_, index) => (
               <motion.div
                 key={index}
@@ -141,7 +141,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             transition={{ delay: 0.4 }}
           >
             <Button
-              onClick={handleNext}
+              onPress={handleNext}
               style="w-full bg-[#043b69] hover:bg-[#032d51] h-11 sm:h-12 gap-2"
             >
               {currentSlide < slides.length - 1 ? "Next" : "Get Started"}

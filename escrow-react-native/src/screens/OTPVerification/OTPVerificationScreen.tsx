@@ -91,43 +91,43 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onPress={onClose}
             style="fixed inset-0 bg-black/60 z-50 backdrop-blur-sm"
           />
 
           {/* Modal */}
-          <div style="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <View style="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               style="bg-white dark:bg-gray-800 w-full max-w-md shadow-2xl relative"
-              onClick={(e) => e.stopPropagation()}
+              onPress={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <TouchableOpacity
-                onClick={onClose}
+                onPress={onClose}
                 style="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors z-10"
               >
                 <X style="w-5 h-5" />
               </TouchableOpacity>
 
               {/* Header */}
-              <div style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6 pb-12">
-                <div style="flex items-center gap-3 mb-3">
-                  <div style="w-12 h-12 bg-white/20 flex items-center justify-center">
+              <View style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6 pb-12">
+                <View style="flex items-center gap-3 mb-3">
+                  <View style="w-12 h-12 bg-white/20 flex items-center justify-center">
                     {email ? <Mail style="w-6 h-6" /> : <Smartphone style="w-6 h-6" />}
                   </View>
                   <View>
                     <Text style={{fontSize:18,fontWeight:"500"}}>Verify OTP</Text>
-                    <p style="text-xs opacity-80">Enter the code sent to your {email ? "email" : "phone"}</Text>
+                    <Text style="text-xs opacity-80">Enter the code sent to your {email ? "email" : "phone"}</Text>
                   </View>
                 </View>
               </View>
 
               {/* Content */}
-              <div style="p-6 -mt-6">
+              <View style="p-6 -mt-6">
                 {/* Info Card */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -135,9 +135,9 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                   transition={{ delay: 0.1 }}
                   style="bg-white dark:bg-gray-700 shadow-lg p-4 mb-6 border border-gray-100 dark:border-gray-600"
                 >
-                  <p style="text-xs text-gray-500 dark:text-gray-400 mb-2">Code sent to</Text>
-                  <div style="text-sm break-all">{email || phone}</View>
-                  <p style="text-xs text-gray-400 dark:text-gray-500 mt-2">
+                  <Text style="text-xs text-gray-500 dark:text-gray-400 mb-2">Code sent to</Text>
+                  <View style="text-sm break-all">{email || phone}</View>
+                  <Text style="text-xs text-gray-400 dark:text-gray-500 mt-2">
                     Please check your {email ? "email inbox" : "messages"} for the verification code
                   </Text>
                 </motion.div>
@@ -149,10 +149,10 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                   transition={{ delay: 0.2 }}
                   style="mb-6"
                 >
-                  <label style="block text-sm mb-3 text-center dark:text-gray-200">
+                  <Text style="block text-sm mb-3 text-center dark:text-gray-200">
                     Enter 6-Digit Code
-                  </label>
-                  <div style="flex justify-center">
+                  </Text>
+                  <View style="flex justify-center">
                     <InputOTP
                       maxLength={6}
                       value={otp}
@@ -180,7 +180,7 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                     </motion.p>
                   )}
 
-                  <p style="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
+                  <Text style="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
                     For demo purposes, use OTP: 123456
                   </Text>
                 </motion.div>
@@ -194,13 +194,13 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                 >
                   {canResend ? (
                     <TouchableOpacity
-                      onClick={handleResend}
+                      onPress={handleResend}
                       style="text-sm text-[#043b69] hover:underline"
                     >
                       Resend OTP
                     </TouchableOpacity>
                   ) : (
-                    <p style="text-sm text-gray-500 dark:text-gray-400">
+                    <Text style="text-sm text-gray-500 dark:text-gray-400">
                       Resend OTP in {resendCountdown}s
                     </Text>
                   )}
@@ -214,14 +214,14 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                   style="space-y-3"
                 >
                   <Button
-                    onClick={handleVerify}
+                    onPress={handleVerify}
                     disabled={otp.length !== 6 || loading}
                     style="w-full bg-[#043b69] hover:bg-[#032d51] h-12 disabled:opacity-50"
                   >
                     {loading ? "Verifying..." : "Verify"}
                   </Button>
                   <Button
-                    onClick={onClose}
+                    onPress={onClose}
                     variant="outline"
                     style="w-full h-12"
                     disabled={loading}

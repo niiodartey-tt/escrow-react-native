@@ -198,30 +198,30 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
   };
 
   return (
-    <div style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+    <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`text-white p-6 ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'}`}
       >
-        <div style="max-w-md mx-auto">
-          <div style="flex items-center justify-between gap-4 mb-4">
-            <div style="flex items-center gap-4">
+        <View style="max-w-md mx-auto">
+          <View style="flex items-center justify-between gap-4 mb-4">
+            <View style="flex items-center gap-4">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={onBack}
+                onPress={onBack}
                 style="p-2 hover:bg-white/10"
               >
                 <ArrowLeft style="w-5 h-5" />
               </motion.button>
               <View>
                 <Text style={{fontSize:20,fontWeight:"600"}}>Notifications</Text>
-                <p style="text-xs opacity-80">{allNotifications.filter(n => !n.read).length} unread</Text>
+                <Text style="text-xs opacity-80">{allNotifications.filter(n => !n.read).length} unread</Text>
               </View>
             </View>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={() => setShowFilters(!showFilters)}
+              onPress={() => setShowFilters(!showFilters)}
               style={`p-2 hover:bg-white/10 ${showFilters ? "bg-white/10" : ""}`}
             >
               <Filter style="w-5 h-5" />
@@ -229,7 +229,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
           </View>
 
           {/* Search Bar */}
-          <div style="relative">
+          <View style="relative">
             <Search style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <Input
               placeholder="Search notifications..."
@@ -239,7 +239,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
             />
             {searchQuery && (
               <TouchableOpacity
-                onClick={() => setSearchQuery("")}
+                onPress={() => setSearchQuery("")}
                 style="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white"
               >
                 <X style="w-5 h-5" />
@@ -259,7 +259,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
                 <motion.button
                   key={option.value}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => {
+                  onPress={() => {
                     setFilterType(option.value);
                     setShowFilters(false);
                   }}
@@ -277,18 +277,18 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6 space-y-3">
+      <View style="max-w-md mx-auto p-6 space-y-3">
         {filteredNotifications.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
           >
-            <div style="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <View style="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Info style="w-8 h-8 text-gray-400" />
             </View>
-            <h3 style="mb-2">No notifications found</Text>
-            <p style="text-gray-500">
+            <Text style="mb-2">No notifications found</Text>
+            <Text style="text-gray-500">
               {searchQuery 
                 ? "Try adjusting your search or filters" 
                 : "You're all caught up!"}
@@ -308,7 +308,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
               transition={{ delay: index * 0.05 }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => {
+              onPress={() => {
                 markAsRead(notification.id);
                 onNavigate("notification-details", notification);
               }}
@@ -316,13 +316,13 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
               <Card style={`p-4 shadow-sm hover:shadow-md transition-all border-l-4 cursor-pointer ${accentColor} ${
                 !notification.read ? (isDark ? "bg-blue-900/20 border-l-blue-500" : "bg-blue-50/30 border-l-[#043b69]") : (isDark ? "bg-gray-800 border-gray-700" : "")
               }`}>
-                <div style="flex items-start gap-3">
-                  <div style={`p-2 ${bg} shrink-0`}>
+                <View style="flex items-start gap-3">
+                  <View style={`p-2 ${bg} shrink-0`}>
                     <Icon style={`w-5 h-5 ${color}`} />
                   </View>
-                  <div style="flex-1 min-w-0">
-                    <div style="flex justify-between items-start mb-1">
-                      <div style={!notification.read ? "" : "text-gray-700"}>
+                  <View style="flex-1 min-w-0">
+                    <View style="flex justify-between items-start mb-1">
+                      <View style={!notification.read ? "" : "text-gray-700"}>
                         {notification.title}
                       </View>
                       {!notification.read && (
@@ -333,10 +333,10 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
                         />
                       )}
                     </View>
-                    <p style="text-gray-500 text-sm mb-2">
+                    <Text style="text-gray-500 text-sm mb-2">
                       {notification.message}
                     </Text>
-                    <span style="text-xs text-gray-400">{notification.time}</Text>
+                    <Text style="text-xs text-gray-400">{notification.time}</Text>
                   </View>
                 </View>
               </Card>

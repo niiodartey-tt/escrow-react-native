@@ -22,13 +22,13 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
 
   if (isSubmitted) {
     return (
-      <div style="h-screen bg-[#F9FAFB] dark:bg-gray-900 flex items-center justify-center p-4 sm:p-6">
+      <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 flex items-center justify-center p-4 sm:p-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           style="max-w-md w-full"
         >
-          <div style="bg-white dark:bg-gray-800 shadow-lg p-6 sm:p-8 text-center">
+          <View style="bg-white dark:bg-gray-800 shadow-lg p-6 sm:p-8 text-center">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -37,15 +37,15 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
             >
               <CheckCircle style="w-8 h-8 text-green-600" />
             </motion.div>
-            <h2 style="mb-2 dark:text-white">Check Your Email</Text>
-            <p style="text-gray-600 dark:text-gray-400 mb-6 text-sm sm:text-base">
+            <Text style="mb-2 dark:text-white">Check Your Email</Text>
+            <Text style="text-gray-600 dark:text-gray-400 mb-6 text-sm sm:text-base">
               We've sent a password reset link to <strong>{email}</strong>
             </Text>
-            <p style="text-sm text-gray-500 dark:text-gray-500 mb-6">
+            <Text style="text-sm text-gray-500 dark:text-gray-500 mb-6">
               Didn't receive the email? Check your spam folder or try again.
             </Text>
             <Button
-              onClick={onBack}
+              onPress={onBack}
               style="w-full bg-[#043b69] hover:bg-[#032d51] h-11 sm:h-12"
             >
               Back to Login
@@ -57,13 +57,13 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
   }
 
   return (
-    <div style="h-screen bg-[#F9FAFB] dark:bg-gray-900 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 overflow-y-auto">
       {/* Header */}
-      <div style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-5 sm:p-6 pb-12 sm:pb-16">
-        <div style="max-w-md mx-auto">
+      <View style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-5 sm:p-6 pb-12 sm:pb-16">
+        <View style="max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-white/10 mb-3 sm:mb-4"
           >
             <ArrowLeft style="w-5 h-5" />
@@ -72,8 +72,8 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 style="text-2xl sm:text-3xl mb-2">Forgot Password?</Text>
-            <p style="text-sm opacity-80">
+            <Text style="text-2xl sm:text-3xl mb-2">Forgot Password?</Text>
+            <Text style="text-sm opacity-80">
               No worries, we'll send you reset instructions
             </Text>
           </motion.div>
@@ -81,21 +81,21 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
       </View>
 
       {/* Form Card */}
-      <div style="max-w-md mx-auto px-4 sm:px-6 -mt-8">
+      <View style="max-w-md mx-auto px-4 sm:px-6 -mt-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style="bg-white dark:bg-gray-800 shadow-lg p-5 sm:p-6"
         >
-          <form onSubmit={handleSubmit} style="space-y-5">
+          <View onSubmit={handleSubmit} style="space-y-5">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
               <Label htmlFor="email">Email Address</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <Mail style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="email"
@@ -107,7 +107,7 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
                   required
                 />
               </View>
-              <p style="text-xs text-gray-500 mt-2">
+              <Text style="text-xs text-gray-500 mt-2">
                 Enter the email associated with your account
               </Text>
             </motion.div>
@@ -124,7 +124,7 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
                 Send Reset Link
               </Button>
             </motion.div>
-          </form>
+          </View>
         </motion.div>
 
         {/* Back to Login */}
@@ -135,7 +135,7 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
           style="text-center mt-5 sm:mt-6 mb-6 sm:mb-8"
         >
           <TouchableOpacity
-            onClick={onBack}
+            onPress={onBack}
             style="text-[#043b69] dark:text-blue-400 hover:underline text-sm sm:text-base"
           >
             ← Back to Login

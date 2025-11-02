@@ -69,7 +69,7 @@ function AlertDialogHeader({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="alert-dialog-header"
       style={cn("flex flex-col gap-2 text-center sm:text-left", className)}
       {...props}
@@ -82,7 +82,7 @@ function AlertDialogFooter({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="alert-dialog-footer"
       style={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",

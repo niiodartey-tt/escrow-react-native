@@ -88,46 +88,46 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
   };
 
   return (
-    <div style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+    <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style={`p-6 text-white ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'}`}
       >
-        <div style="flex items-center gap-4 max-w-md mx-auto">
+        <View style="flex items-center gap-4 max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-white/10"
           >
             <ArrowLeft style="w-5 h-5" />
           </motion.button>
           <View>
             <Text style={{fontSize:20,fontWeight:"600"}}>Settings</Text>
-            <p style="text-xs opacity-80">Manage your preferences</Text>
+            <Text style="text-xs opacity-80">Manage your preferences</Text>
           </View>
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6 space-y-6">
+      <View style="max-w-md mx-auto p-6 space-y-6">
         {/* Appearance */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <h4 style={`mb-3 ${isDark ? 'text-white' : ''}`}>Appearance</h4>
+          <Text style={`mb-3 ${isDark ? 'text-white' : ''}`}>Appearance</Text>
           <Card style={`p-4 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-            <div style="flex items-center justify-between">
-              <div style="flex items-center gap-3">
+            <View style="flex items-center justify-between">
+              <View style="flex items-center gap-3">
                 {isDark ? (
                   <Moon style="w-5 h-5 text-blue-500" />
                 ) : (
                   <Sun style="w-5 h-5 text-[#043b69]" />
                 )}
                 <View>
-                  <div style={isDark ? 'text-white' : ''}>Dark Mode</View>
-                  <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <View style={isDark ? 'text-white' : ''}>Dark Mode</View>
+                  <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     {isDark ? 'Currently using dark theme' : 'Switch to dark theme'}
                   </Text>
                 </View>
@@ -149,14 +149,14 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <h4 style={`mb-3 ${isDark ? 'text-white' : ''}`}>Notifications</h4>
+          <Text style={`mb-3 ${isDark ? 'text-white' : ''}`}>Notifications</Text>
           <Card style={`p-4 shadow-md space-y-4 ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-            <div style="flex items-center justify-between">
-              <div style="flex items-center gap-3">
+            <View style="flex items-center justify-between">
+              <View style="flex items-center gap-3">
                 <Smartphone style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                 <View>
-                  <div style={isDark ? 'text-white' : ''}>Push Notifications</View>
-                  <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <View style={isDark ? 'text-white' : ''}>Push Notifications</View>
+                  <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     Get real-time push notifications
                   </Text>
                 </View>
@@ -166,12 +166,12 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
                 onCheckedChange={handleNotificationsToggle}
               />
             </View>
-            <div style="flex items-center justify-between">
-              <div style="flex items-center gap-3">
+            <View style="flex items-center justify-between">
+              <View style="flex items-center gap-3">
                 <Bell style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                 <View>
-                  <div style={isDark ? 'text-white' : ''}>Email Alerts</View>
-                  <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Receive email updates</Text>
+                  <View style={isDark ? 'text-white' : ''}>Email Alerts</View>
+                  <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Receive email updates</Text>
                 </View>
               </View>
               <Switch
@@ -188,14 +188,14 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <h4 style={`mb-3 ${isDark ? 'text-white' : ''}`}>Security</h4>
+          <Text style={`mb-3 ${isDark ? 'text-white' : ''}`}>Security</Text>
           <Card style={`p-4 shadow-md space-y-4 ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-            <div style="flex items-center justify-between">
-              <div style="flex items-center gap-3">
+            <View style="flex items-center justify-between">
+              <View style="flex items-center gap-3">
                 <Shield style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                 <View>
-                  <div style={isDark ? 'text-white' : ''}>Two-Factor Authentication</View>
-                  <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Add extra security layer</Text>
+                  <View style={isDark ? 'text-white' : ''}>Two-Factor Authentication</View>
+                  <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Add extra security layer</Text>
                 </View>
               </View>
               <Switch
@@ -203,12 +203,12 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
                 onCheckedChange={handle2FAToggle}
               />
             </View>
-            <div style="flex items-center justify-between">
-              <div style="flex items-center gap-3">
+            <View style="flex items-center justify-between">
+              <View style="flex items-center gap-3">
                 <Lock style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                 <View>
-                  <div style={isDark ? 'text-white' : ''}>Biometric Login</View>
-                  <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Use fingerprint/face ID</Text>
+                  <View style={isDark ? 'text-white' : ''}>Biometric Login</View>
+                  <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Use fingerprint/face ID</Text>
                 </View>
               </View>
               <Switch
@@ -225,18 +225,18 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h4 style={`mb-3 ${isDark ? 'text-white' : ''}`}>Preferences</h4>
+          <Text style={`mb-3 ${isDark ? 'text-white' : ''}`}>Preferences</Text>
           <Card style={`p-4 shadow-md space-y-3 ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
             <motion.button
               whileTap={{ scale: 0.98 }}
               style={`w-full flex items-center justify-between p-3 rounded-lg ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}
-              onClick={() => toast.info("Language settings")}
+              onPress={() => toast.info("Language settings")}
             >
-              <div style="flex items-center gap-3">
+              <View style="flex items-center gap-3">
                 <Globe style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
-                <div style="text-left">
-                  <div style={`text-sm ${isDark ? 'text-white' : ''}`}>Language</View>
-                  <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                <View style="text-left">
+                  <View style={`text-sm ${isDark ? 'text-white' : ''}`}>Language</View>
+                  <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     {languageNames[language]}
                   </Text>
                 </View>
@@ -247,13 +247,13 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
             <motion.button
               whileTap={{ scale: 0.98 }}
               style={`w-full flex items-center justify-between p-3 rounded-lg ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}
-              onClick={() => toast.info("Currency settings")}
+              onPress={() => toast.info("Currency settings")}
             >
-              <div style="flex items-center gap-3">
+              <View style="flex items-center gap-3">
                 <CreditCard style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
-                <div style="text-left">
-                  <div style={`text-sm ${isDark ? 'text-white' : ''}`}>Currency</View>
-                  <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{currency}</Text>
+                <View style="text-left">
+                  <View style={`text-sm ${isDark ? 'text-white' : ''}`}>Currency</View>
+                  <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{currency}</Text>
                 </View>
               </View>
               <ChevronRight style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-400'}`} />
@@ -267,16 +267,16 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <h4 style={`mb-3 ${isDark ? 'text-white' : ''}`}>Help & Support</h4>
+          <Text style={`mb-3 ${isDark ? 'text-white' : ''}`}>Help & Support</Text>
           <Card style={`p-4 shadow-md space-y-3 ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
             <motion.button
               whileTap={{ scale: 0.98 }}
               style={`w-full flex items-center justify-between p-3 rounded-lg ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}
-              onClick={() => toast.info("Help center")}
+              onPress={() => toast.info("Help center")}
             >
-              <div style="flex items-center gap-3">
+              <View style="flex items-center gap-3">
                 <HelpCircle style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
-                <span style={`text-sm ${isDark ? 'text-white' : ''}`}>Help Center</Text>
+                <Text style={`text-sm ${isDark ? 'text-white' : ''}`}>Help Center</Text>
               </View>
               <ChevronRight style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-400'}`} />
             </motion.button>
@@ -284,11 +284,11 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
             <motion.button
               whileTap={{ scale: 0.98 }}
               style={`w-full flex items-center justify-between p-3 rounded-lg ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}
-              onClick={() => toast.info("Privacy policy")}
+              onPress={() => toast.info("Privacy policy")}
             >
-              <div style="flex items-center gap-3">
+              <View style="flex items-center gap-3">
                 <FileText style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
-                <span style={`text-sm ${isDark ? 'text-white' : ''}`}>Privacy Policy</Text>
+                <Text style={`text-sm ${isDark ? 'text-white' : ''}`}>Privacy Policy</Text>
               </View>
               <ChevronRight style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-400'}`} />
             </motion.button>
@@ -304,7 +304,7 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
           <Button
             variant="outline"
             style={`w-full h-12 gap-2 ${isDark ? 'border-red-600 text-red-400 hover:bg-red-900/20' : 'text-red-600 hover:bg-red-50 border-red-200'}`}
-            onClick={() => setShowLogoutDialog(true)}
+            onPress={() => setShowLogoutDialog(true)}
           >
             <LogOut style="w-4 h-4" />
             Logout
@@ -328,7 +328,7 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction
-              onClick={handleLogout}
+              onPress={handleLogout}
               style={`${isDark ? 'bg-red-600 hover:bg-red-700' : 'bg-red-600 hover:bg-red-700'} text-white`}
             >
               Logout

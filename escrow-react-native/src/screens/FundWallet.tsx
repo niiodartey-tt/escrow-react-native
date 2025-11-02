@@ -49,16 +49,16 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
   };
 
   return (
-    <div style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
       >
-        <div style="flex items-center gap-4 max-w-md mx-auto">
+        <View style="flex items-center gap-4 max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-gray-100 rounded-full"
           >
             <ArrowLeft style="w-5 h-5" />
@@ -67,7 +67,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6">
+      <View style="max-w-md mx-auto p-6">
         {/* Amount Input */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
           style="mb-6"
         >
           <Label>Amount to Add</Label>
-          <div style="relative mt-2">
+          <View style="relative mt-2">
             <DollarSign style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <Input
               type="number"
@@ -89,9 +89,9 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
         </motion.div>
 
         {/* Payment Methods */}
-        <div style="mb-6">
-          <h4 style="mb-4">Select Payment Method</h4>
-          <div style="space-y-3">
+        <View style="mb-6">
+          <Text style="mb-4">Select Payment Method</Text>
+          <View style="space-y-3">
             {paymentMethods.map((method, index) => {
               const Icon = method.icon;
               const isSelected = selectedMethod === method.id;
@@ -104,13 +104,13 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
                   transition={{ delay: 0.2 + index * 0.1 }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => setSelectedMethod(method.id)}
+                  onPress={() => setSelectedMethod(method.id)}
                 >
                   <Card style={`p-4 cursor-pointer transition-all ${
                     isSelected ? "border-2 border-[#043b69] shadow-lg" : "border shadow-sm"
                   }`}>
-                    <div style="flex items-center gap-3">
-                      <div style={`p-3 rounded-xl ${
+                    <View style="flex items-center gap-3">
+                      <View style={`p-3 rounded-xl ${
                         method.color === "blue" ? "bg-blue-100" :
                         method.color === "green" ? "bg-green-100" :
                         "bg-purple-100"
@@ -121,8 +121,8 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
                           "text-purple-600"
                         }`} />
                       </View>
-                      <div style="flex-1">{method.name}</View>
-                      <div style={`w-5 h-5 rounded-full border-2 ${
+                      <View style="flex-1">{method.name}</View>
+                      <View style={`w-5 h-5 rounded-full border-2 ${
                         isSelected ? "border-[#043b69] bg-[#043b69]" : "border-gray-300"
                       } flex items-center justify-center`}>
                         {isSelected && (
@@ -155,7 +155,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
                   <Label>Card Number</Label>
                   <Input placeholder="1234 5678 9012 3456" style="mt-2" />
                 </View>
-                <div style="grid grid-cols-2 gap-4">
+                <View style="grid grid-cols-2 gap-4">
                   <View>
                     <Label>Expiry Date</Label>
                     <Input placeholder="MM/YY" style="mt-2" />
@@ -194,7 +194,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
           animate={{ opacity: 1, y: 0 }}
         >
           <Button
-            onClick={handlePayment}
+            onPress={handlePayment}
             disabled={!amount || !selectedMethod}
             style="w-full bg-[#043b69] hover:bg-[#032d51] shadow-lg disabled:opacity-50"
           >

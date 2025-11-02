@@ -21,7 +21,7 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
     if (container) {
       for (let i = 0; i < particles; i++) {
         const particle = document.createElement('div');
-        particle.className = 'confetti-particle';
+        particle.style={/* confetti-particle */};
         particle.style.left = Math.random() * 100 + '%';
         particle.style.animationDelay = Math.random() * 0.5 + 's';
         particle.style.backgroundColor = ['#043b69', '#10B981', '#F59E0B', '#EF4444'][Math.floor(Math.random() * 4)];
@@ -55,9 +55,9 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
   }[action] || "Your transaction has been completed successfully.";
 
   return (
-    <div style="h-screen bg-[#F9FAFB] relative overflow-hidden">
+    <View style="h-screen bg-[#F9FAFB] relative overflow-hidden">
       {/* Confetti Container */}
-      <div id="confetti-container" style="fixed inset-0 pointer-events-none z-10" />
+      <View id="confetti-container" style="fixed inset-0 pointer-events-none z-10" />
       
       <style>{`
         .confetti-particle {
@@ -77,7 +77,7 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
       `}</style>
 
       {/* Background gradient circles */}
-      <div style="absolute inset-0 overflow-hidden">
+      <View style="absolute inset-0 overflow-hidden">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.1 }}
@@ -93,7 +93,7 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
       </View>
 
       {/* Content */}
-      <div style="relative z-20 h-full flex flex-col items-center justify-center p-6">
+      <View style="relative z-20 h-full flex flex-col items-center justify-center p-6">
         {/* Success Icon */}
         <motion.div
           initial={{ scale: 0 }}
@@ -106,14 +106,14 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
           }}
           style="mb-8"
         >
-          <div style="relative">
+          <View style="relative">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.3 }}
               style="absolute inset-0 bg-green-500/20 rounded-full blur-2xl"
             />
-            <div style="relative w-24 h-24 bg-green-500 rounded-full flex items-center justify-center">
+            <View style="relative w-24 h-24 bg-green-500 rounded-full flex items-center justify-center">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -137,8 +137,8 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
           transition={{ delay: 0.5 }}
           style="text-center mb-8"
         >
-          <h2 style="mb-2">{successMessage}</Text>
-          <p style="text-gray-500 max-w-sm">
+          <Text style="mb-2">{successMessage}</Text>
+          <Text style="text-gray-500 max-w-sm">
             {successDescription}
           </Text>
         </motion.div>
@@ -151,18 +151,18 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
           style="w-full max-w-md mb-8"
         >
           <Card style="p-6 shadow-lg rounded-[0px]">
-            <div style="space-y-4">
-              <div style="flex justify-between items-center pb-4 border-b border-gray-200">
-                <span style="text-gray-500">Transaction ID</Text>
-                <span style="font-mono text-sm">{transaction?.id || "ESC-10234"}</Text>
+            <View style="space-y-4">
+              <View style="flex justify-between items-center pb-4 border-b border-gray-200">
+                <Text style="text-gray-500">Transaction ID</Text>
+                <Text style="font-mono text-sm">{transaction?.id || "ESC-10234"}</Text>
               </View>
-              <div style="flex justify-between items-center pb-4 border-b border-gray-200">
-                <span style="text-gray-500">Amount</Text>
-                <div style="text-2xl">${transaction?.amount || "450.00"}</View>
+              <View style="flex justify-between items-center pb-4 border-b border-gray-200">
+                <Text style="text-gray-500">Amount</Text>
+                <View style="text-2xl">${transaction?.amount || "450.00"}</View>
               </View>
-              <div style="flex justify-between items-center pb-4 border-b border-gray-200">
-                <span style="text-gray-500">Status</Text>
-                <span style={`px-3 py-1 text-sm ${
+              <View style="flex justify-between items-center pb-4 border-b border-gray-200">
+                <Text style="text-gray-500">Status</Text>
+                <Text style={`px-3 py-1 text-sm ${
                   action === "create-escrow" 
                     ? "bg-blue-100 text-blue-700" 
                     : "bg-green-100 text-green-700"
@@ -170,9 +170,9 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
                   {action === "create-escrow" ? "In Escrow" : "Completed"}
                 </Text>
               </View>
-              <div style="flex justify-between items-center">
-                <span style="text-gray-500">Date</Text>
-                <span style="text-sm">{new Date().toLocaleDateString('en-US', { 
+              <View style="flex justify-between items-center">
+                <Text style="text-gray-500">Date</Text>
+                <Text style="text-sm">{new Date().toLocaleDateString('en-US', { 
                   month: 'short', 
                   day: 'numeric', 
                   year: 'numeric',
@@ -193,14 +193,14 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
         >
           {action === "create-escrow" ? (
             <Button
-              onClick={() => onNavigate("transaction-details", transaction)}
+              onPress={() => onNavigate("transaction-details", transaction)}
               style="w-full bg-[#043b69] hover:bg-[#032d51] h-12"
             >
               View Transaction Details
             </Button>
           ) : (
             <Button
-              onClick={() => onNavigate("dashboard")}
+              onPress={() => onNavigate("dashboard")}
               style="w-full bg-[#043b69] hover:bg-[#032d51] h-12 gap-2"
             >
               <Home style="w-4 h-4" />
@@ -208,11 +208,11 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
             </Button>
           )}
           
-          <div style="grid grid-cols-2 gap-3">
+          <View style="grid grid-cols-2 gap-3">
             <Button
               variant="outline"
               style="h-12 gap-2"
-              onClick={() => window.print()}
+              onPress={() => window.print()}
             >
               <Download style="w-4 h-4" />
               Download
@@ -220,7 +220,7 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
             <Button
               variant="outline"
               style="h-12 gap-2 rounded-[4px]"
-              onClick={() => {
+              onPress={() => {
                 if (navigator.share) {
                   navigator.share({
                     title: 'Transaction Receipt',

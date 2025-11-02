@@ -151,7 +151,7 @@ function ContextMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <Text style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
           <CheckIcon style="size-4" />
         </ContextMenuPrimitive.ItemIndicator>
@@ -175,7 +175,7 @@ function ContextMenuRadioItem({
       )}
       {...props}
     >
-      <span style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <Text style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
           <CircleIcon style="size-2 fill-current" />
         </ContextMenuPrimitive.ItemIndicator>
@@ -223,7 +223,7 @@ function ContextMenuShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Text
       data-slot="context-menu-shortcut"
       style={cn(
         "text-muted-foreground ml-auto text-xs tracking-widest",

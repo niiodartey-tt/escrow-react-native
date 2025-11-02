@@ -128,7 +128,7 @@ function MenubarCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <Text style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
           <CheckIcon style="size-4" />
         </MenubarPrimitive.ItemIndicator>
@@ -152,7 +152,7 @@ function MenubarRadioItem({
       )}
       {...props}
     >
-      <span style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <Text style="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
           <CircleIcon style="size-2 fill-current" />
         </MenubarPrimitive.ItemIndicator>
@@ -200,7 +200,7 @@ function MenubarShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Text
       data-slot="menubar-shortcut"
       style={cn(
         "text-muted-foreground ml-auto text-xs tracking-widest",

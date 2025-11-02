@@ -130,7 +130,7 @@ function SidebarProvider({
   return (
     <SidebarContext.Provider value={contextValue}>
       <TooltipProvider delayDuration={0}>
-        <div
+        <View
           data-slot="sidebar-wrapper"
           style={
             {
@@ -168,7 +168,7 @@ function Sidebar({
 
   if (collapsible === "none") {
     return (
-      <div
+      <View
         data-slot="sidebar"
         style={cn(
           "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
@@ -200,14 +200,14 @@ function Sidebar({
             <SheetTitle>Sidebar</SheetTitle>
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
-          <div style="flex h-full w-full flex-col">{children}</View>
+          <View style="flex h-full w-full flex-col">{children}</View>
         </SheetContent>
       </Sheet>
     );
   }
 
   return (
-    <div
+    <View
       style="group peer text-sidebar-foreground hidden md:block"
       data-state={state}
       data-collapsible={state === "collapsed" ? collapsible : ""}
@@ -216,7 +216,7 @@ function Sidebar({
       data-slot="sidebar"
     >
       {/* This is what handles the sidebar gap on desktop */}
-      <div
+      <View
         data-slot="sidebar-gap"
         style={cn(
           "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
@@ -227,7 +227,7 @@ function Sidebar({
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)",
         )}
       />
-      <div
+      <View
         data-slot="sidebar-container"
         style={cn(
           "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
@@ -242,7 +242,7 @@ function Sidebar({
         )}
         {...props}
       >
-        <div
+        <View
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
           style="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
@@ -268,14 +268,14 @@ function SidebarTrigger({
       variant="ghost"
       size="icon"
       style={cn("size-7", className)}
-      onClick={(event) => {
+      onPress={(event) => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
       <PanelLeftIcon />
-      <span style="sr-only">Toggle Sidebar</Text>
+      <Text style="sr-only">Toggle Sidebar</Text>
     </Button>
   );
 }
@@ -289,7 +289,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
       data-slot="sidebar-rail"
       aria-label="Toggle Sidebar"
       tabIndex={-1}
-      onClick={toggleSidebar}
+      onPress={toggleSidebar}
       title="Toggle Sidebar"
       style={cn(
         "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] sm:flex",
@@ -307,7 +307,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 
 function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
   return (
-    <main
+    <View
       data-slot="sidebar-inset"
       style={cn(
         "bg-background relative flex w-full flex-1 flex-col",
@@ -335,7 +335,7 @@ function SidebarInput({
 
 function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="sidebar-header"
       data-sidebar="header"
       style={cn("flex flex-col gap-2 p-2", className)}
@@ -346,7 +346,7 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
 
 function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="sidebar-footer"
       data-sidebar="footer"
       style={cn("flex flex-col gap-2 p-2", className)}
@@ -371,7 +371,7 @@ function SidebarSeparator({
 
 function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="sidebar-content"
       data-sidebar="content"
       style={cn(
@@ -385,7 +385,7 @@ function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
 
 function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="sidebar-group"
       data-sidebar="group"
       style={cn("relative flex w-full min-w-0 flex-col p-2", className)}
@@ -443,7 +443,7 @@ function SidebarGroupContent({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="sidebar-group-content"
       data-sidebar="group-content"
       style={cn("w-full text-sm", className)}
@@ -454,7 +454,7 @@ function SidebarGroupContent({
 
 function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   return (
-    <ul
+    <View
       data-slot="sidebar-menu"
       data-sidebar="menu"
       style={cn("flex w-full min-w-0 flex-col gap-1", className)}
@@ -465,7 +465,7 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
 
 function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
   return (
-    <li
+    <Text
       data-slot="sidebar-menu-item"
       data-sidebar="menu-item"
       style={cn("group/menu-item relative", className)}
@@ -583,7 +583,7 @@ function SidebarMenuBadge({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="sidebar-menu-badge"
       data-sidebar="menu-badge"
       style={cn(
@@ -613,7 +613,7 @@ function SidebarMenuSkeleton({
   }, []);
 
   return (
-    <div
+    <View
       data-slot="sidebar-menu-skeleton"
       data-sidebar="menu-skeleton"
       style={cn("flex h-8 items-center gap-2 rounded-md px-2", className)}
@@ -640,7 +640,7 @@ function SidebarMenuSkeleton({
 
 function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
   return (
-    <ul
+    <View
       data-slot="sidebar-menu-sub"
       data-sidebar="menu-sub"
       style={cn(
@@ -658,7 +658,7 @@ function SidebarMenuSubItem({
   ...props
 }: React.ComponentProps<"li">) {
   return (
-    <li
+    <Text
       data-slot="sidebar-menu-sub-item"
       data-sidebar="menu-sub-item"
       style={cn("group/menu-sub-item relative", className)}

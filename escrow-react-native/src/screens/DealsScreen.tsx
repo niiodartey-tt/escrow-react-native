@@ -164,18 +164,18 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
   };
 
   return (
-    <div style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-20"
       >
-        <div style="max-w-md mx-auto">
-          <div style="flex items-center justify-between mb-4">
-            <div style="flex items-center gap-4">
+        <View style="max-w-md mx-auto">
+          <View style="flex items-center justify-between mb-4">
+            <View style="flex items-center gap-4">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={onBack}
+                onPress={onBack}
                 style="p-2 hover:bg-gray-100 rounded-full"
               >
                 <ArrowLeft style="w-5 h-5" />
@@ -184,7 +184,7 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
             </View>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={() => setShowFilterMenu(!showFilterMenu)}
+              onPress={() => setShowFilterMenu(!showFilterMenu)}
               style={`p-2 hover:bg-gray-100 rounded-full ${showFilterMenu ? "bg-gray-100" : ""}`}
             >
               <Filter style="w-5 h-5" />
@@ -192,7 +192,7 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
           </View>
 
           {/* Search Bar */}
-          <div style="relative mb-3">
+          <View style="relative mb-3">
             <Search style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <Input
               placeholder="Search deals..."
@@ -202,7 +202,7 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
             />
             {searchQuery && (
               <TouchableOpacity
-                onClick={() => setSearchQuery("")}
+                onPress={() => setSearchQuery("")}
                 style="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
                 <X style="w-5 h-5" />
@@ -219,12 +219,12 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
                 exit={{ opacity: 0, height: 0 }}
                 style="overflow-hidden"
               >
-                <div style="flex gap-2 flex-wrap pb-2">
+                <View style="flex gap-2 flex-wrap pb-2">
                   {filterOptions.map((option) => (
                     <motion.button
                       key={option.value}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => {
+                      onPress={() => {
                         setSelectedFilter(option.value);
                         setShowFilterMenu(false);
                       }}
@@ -244,25 +244,25 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6">
+      <View style="max-w-md mx-auto p-6">
         {filteredDeals.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
           >
-            <div style="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <View style="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Package style="w-8 h-8 text-gray-400" />
             </View>
-            <h3 style="mb-2">No deals found</Text>
-            <p style="text-gray-500 mb-6">
+            <Text style="mb-2">No deals found</Text>
+            <Text style="text-gray-500 mb-6">
               {searchQuery 
                 ? "Try adjusting your search or filters" 
                 : "Create your first deal to get started"}
             </Text>
             {!searchQuery && (
               <Button
-                onClick={onCreateDeal}
+                onPress={onCreateDeal}
                 style="bg-[#043b69] hover:bg-[#032d51]"
               >
                 <Plus style="w-4 h-4 mr-2" />
@@ -271,7 +271,7 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
             )}
           </motion.div>
         ) : (
-          <div style="space-y-4">
+          <View style="space-y-4">
             {filteredDeals.map((deal, index) => (
             <motion.div
               key={deal.id}
@@ -280,13 +280,13 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -4, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => onNavigate("transaction-details", deal)}
+              onPress={() => onNavigate("transaction-details", deal)}
             >
               <Card style={`p-4 cursor-pointer shadow-sm transition-shadow border-l-4 ${
                 deal.role === "buyer" ? "border-l-blue-600" : "border-l-green-600"
               }`}>
-                <div style="flex items-start gap-3 mb-3">
-                  <div style={`p-2 rounded-lg ${
+                <View style="flex items-start gap-3 mb-3">
+                  <View style={`p-2 rounded-lg ${
                     deal.role === "buyer" ? "bg-blue-100" : "bg-green-100"
                   }`}>
                     {deal.type === "product" ? (
@@ -299,12 +299,12 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
                       }`} />
                     )}
                   </View>
-                  <div style="flex-1">
-                    <div style="flex justify-between items-start mb-1">
+                  <View style="flex-1">
+                    <View style="flex justify-between items-start mb-1">
                       <View>
-                        <div style="flex items-center gap-2">
+                        <View style="flex items-center gap-2">
                           <Text>{deal.title}</Text>
-                          <span style={`text-xs px-2 py-0.5 rounded ${
+                          <Text style={`text-xs px-2 py-0.5 rounded ${
                             deal.role === "buyer" 
                               ? "bg-blue-100 text-blue-700" 
                               : "bg-green-100 text-green-700"
@@ -312,24 +312,24 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
                             {deal.role === "buyer" ? "Buying" : "Selling"}
                           </Text>
                         </View>
-                        <p style="text-xs text-gray-500">{deal.id}</Text>
+                        <Text style="text-xs text-gray-500">{deal.id}</Text>
                       </View>
-                      <div style="text-right">
-                        <div style={deal.role === "buyer" ? "text-red-600" : "text-green-600"}>
+                      <View style="text-right">
+                        <View style={deal.role === "buyer" ? "text-red-600" : "text-green-600"}>
                           {deal.role === "buyer" ? "-" : "+"}${deal.amount}
                         </View>
                       </View>
                     </View>
                   </View>
                 </View>
-                <div style="flex justify-between items-center">
-                  <div style="flex items-center gap-2">
+                <View style="flex justify-between items-center">
+                  <View style="flex items-center gap-2">
                     <Badge style={getStatusColor(deal.status)}>
                       {deal.status}
                     </Badge>
-                    <span style="text-xs text-gray-500">{deal.date}</Text>
+                    <Text style="text-xs text-gray-500">{deal.date}</Text>
                   </View>
-                  <p style="text-xs text-gray-500">
+                  <Text style="text-xs text-gray-500">
                     {deal.role === "buyer" ? "Seller" : "Buyer"}: {deal.counterparty}
                   </Text>
                 </View>
@@ -345,7 +345,7 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
           whileTap={{ scale: 0.9 }}
           animate={{ y: [0, -10, 0] }}
           transition={{ y: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
-          onClick={onCreateDeal}
+          onPress={onCreateDeal}
           style="fixed bottom-24 right-6 bg-[#043b69] text-white p-4 rounded-full shadow-lg z-20"
         >
           <Plus style="w-6 h-6" />

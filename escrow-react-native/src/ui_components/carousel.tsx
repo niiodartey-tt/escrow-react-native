@@ -119,7 +119,7 @@ function Carousel({
         canScrollNext,
       }}
     >
-      <div
+      <View
         onKeyDownCapture={handleKeyDown}
         style={cn("relative", className)}
         role="region"
@@ -137,12 +137,12 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div
+    <View
       ref={carouselRef}
       style="overflow-hidden"
       data-slot="carousel-content"
     >
-      <div
+      <View
         style={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
@@ -158,7 +158,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
   const { orientation } = useCarousel();
 
   return (
-    <div
+    <View
       role="group"
       aria-roledescription="slide"
       data-slot="carousel-item"
@@ -193,11 +193,11 @@ function CarouselPrevious({
         className,
       )}
       disabled={!canScrollPrev}
-      onClick={scrollPrev}
+      onPress={scrollPrev}
       {...props}
     >
       <ArrowLeft />
-      <span style="sr-only">Previous slide</Text>
+      <Text style="sr-only">Previous slide</Text>
     </Button>
   );
 }
@@ -223,11 +223,11 @@ function CarouselNext({
         className,
       )}
       disabled={!canScrollNext}
-      onClick={scrollNext}
+      onPress={scrollNext}
       {...props}
     >
       <ArrowRight />
-      <span style="sr-only">Next slide</Text>
+      <Text style="sr-only">Next slide</Text>
     </Button>
   );
 }

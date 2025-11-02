@@ -198,7 +198,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
   ];
 
   return (
-    <div style={`h-screen pb-0 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+    <View style={`h-screen pb-0 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -209,29 +209,29 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
             : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'
         } text-white p-6`}
       >
-        <div style="flex items-center gap-4 max-w-md mx-auto mb-4">
+        <View style="flex items-center gap-4 max-w-md mx-auto mb-4">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={handleBack}
+            onPress={handleBack}
             style="p-2 hover:bg-white/10 rounded-full"
           >
             <ArrowLeft style="w-5 h-5" />
           </motion.button>
-          <div style="flex-1">
+          <View style="flex-1">
             <Text style={{fontSize:20,fontWeight:"600"}}>KYC Verification</Text>
-            <p style="text-xs opacity-80">Step {currentStep} of {totalSteps}</Text>
+            <Text style="text-xs opacity-80">Step {currentStep} of {totalSteps}</Text>
           </View>
           <Shield style="w-6 h-6" />
         </View>
         
         {/* Progress Bar */}
-        <div style="max-w-md mx-auto">
+        <View style="max-w-md mx-auto">
           <Progress value={progress} style="h-2 bg-white/20" />
         </View>
       </motion.div>
 
       {/* Content */}
-      <div style="max-w-md mx-auto p-6">
+      <View style="max-w-md mx-auto p-6">
         {/* Info Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -243,13 +243,13 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               ? 'bg-blue-900/20 border-blue-700' 
               : 'bg-blue-50 border-blue-200'
           }`}>
-            <div style="flex gap-3">
+            <View style="flex gap-3">
               <AlertCircle style="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
               <View>
-                <h4 style={`mb-1 ${isDark ? 'text-blue-200' : 'text-blue-800'}`}>
+                <Text style={`mb-1 ${isDark ? 'text-blue-200' : 'text-blue-800'}`}>
                   Why do we need this?
-                </h4>
-                <p style={`text-sm ${isDark ? 'text-blue-300' : 'text-blue-700'}`}>
+                </Text>
+                <Text style={`text-sm ${isDark ? 'text-blue-300' : 'text-blue-700'}`}>
                   KYC verification helps us comply with regulations and keep your account secure. 
                   Your information is encrypted and stored safely.
                 </Text>
@@ -269,19 +269,19 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               transition={{ duration: 0.3 }}
             >
               <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                <div style="flex items-center gap-3 mb-6">
-                  <div style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
+                <View style="flex items-center gap-3 mb-6">
+                  <View style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
                     <User style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                   </View>
                   <View>
-                    <h3 style={isDark ? 'text-white' : ''}>Personal Information</Text>
-                    <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <Text style={isDark ? 'text-white' : ''}>Personal Information</Text>
+                    <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       Enter your legal name as it appears on your ID
                     </Text>
                   </View>
                 </View>
 
-                <div style="space-y-4">
+                <View style="space-y-4">
                   <View>
                     <Label style={isDark ? 'text-gray-300' : ''}>First Name *</Label>
                     <Input
@@ -306,7 +306,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
 
                   <View>
                     <Label style={isDark ? 'text-gray-300' : ''}>Date of Birth *</Label>
-                    <div style="relative">
+                    <View style="relative">
                       <Input
                         type="date"
                         value={kycData.dateOfBirth}
@@ -317,7 +317,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                       />
                       <Calendar style={`absolute right-3 top-1/2 -translate-y-1/2 mt-1 w-4 h-4 pointer-events-none ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
                     </View>
-                    <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       You must be at least 18 years old
                     </Text>
                   </View>
@@ -359,19 +359,19 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               transition={{ duration: 0.3 }}
             >
               <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                <div style="flex items-center gap-3 mb-6">
-                  <div style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
+                <View style="flex items-center gap-3 mb-6">
+                  <View style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
                     <MapPin style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                   </View>
                   <View>
-                    <h3 style={isDark ? 'text-white' : ''}>Address Information</Text>
-                    <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <Text style={isDark ? 'text-white' : ''}>Address Information</Text>
+                    <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       Enter your current residential address
                     </Text>
                   </View>
                 </View>
 
-                <div style="space-y-4">
+                <View style="space-y-4">
                   <View>
                     <Label style={isDark ? 'text-gray-300' : ''}>Street Address *</Label>
                     <Input
@@ -383,7 +383,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                     />
                   </View>
 
-                  <div style="grid grid-cols-2 gap-3">
+                  <View style="grid grid-cols-2 gap-3">
                     <View>
                       <Label style={isDark ? 'text-gray-300' : ''}>City *</Label>
                       <Input
@@ -406,7 +406,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                     </View>
                   </View>
 
-                  <div style="grid grid-cols-2 gap-3">
+                  <View style="grid grid-cols-2 gap-3">
                     <View>
                       <Label style={isDark ? 'text-gray-300' : ''}>ZIP Code *</Label>
                       <Input
@@ -455,19 +455,19 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               transition={{ duration: 0.3 }}
             >
               <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                <div style="flex items-center gap-3 mb-6">
-                  <div style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
+                <View style="flex items-center gap-3 mb-6">
+                  <View style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
                     <CreditCard style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                   </View>
                   <View>
-                    <h3 style={isDark ? 'text-white' : ''}>Identity Verification</Text>
-                    <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <Text style={isDark ? 'text-white' : ''}>Identity Verification</Text>
+                    <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       Provide your government-issued ID details
                     </Text>
                   </View>
                 </View>
 
-                <div style="space-y-4">
+                <View style="space-y-4">
                   <View>
                     <Label style={isDark ? 'text-gray-300' : ''}>ID Type *</Label>
                     <Select 
@@ -512,7 +512,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                       min={new Date().toISOString().split('T')[0]}
                       required
                     />
-                    <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       Your ID must be valid for at least 6 months
                     </Text>
                   </View>
@@ -531,19 +531,19 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               transition={{ duration: 0.3 }}
             >
               <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                <div style="flex items-center gap-3 mb-6">
-                  <div style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
+                <View style="flex items-center gap-3 mb-6">
+                  <View style={`p-3 rounded-full ${isDark ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
                     <FileText style={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-[#043b69]'}`} />
                   </View>
                   <View>
-                    <h3 style={isDark ? 'text-white' : ''}>Upload Documents</Text>
-                    <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <Text style={isDark ? 'text-white' : ''}>Upload Documents</Text>
+                    <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       Please upload clear photos of your documents
                     </Text>
                   </View>
                 </View>
 
-                <div style="space-y-4">
+                <View style="space-y-4">
                   {/* ID Front Photo */}
                   <View>
                     <Label style={isDark ? 'text-gray-300' : ''}>ID Front Photo *</Label>
@@ -556,7 +556,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                           : (isDark ? 'border-gray-600 hover:border-blue-500 bg-gray-700/30' : 'border-gray-300 hover:border-[#043b69] bg-gray-50')
                       }`}
                     >
-                      <input
+                      <TextInput
                         type="file"
                         accept="image/*"
                         onChange={(e) => handleFileUpload("idFrontPhoto", e)}
@@ -565,17 +565,17 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                       {kycData.idFrontPhoto ? (
                         <>
                           <CheckCircle style="w-8 h-8 text-green-500 mb-2" />
-                          <p style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
+                          <Text style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
                             {kycData.idFrontPhoto.name}
                           </Text>
                         </>
                       ) : (
                         <>
                           <Upload style={`w-8 h-8 mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
-                          <p style={isDark ? 'text-gray-300' : 'text-gray-600'}>
+                          <Text style={isDark ? 'text-gray-300' : 'text-gray-600'}>
                             Upload front of ID
                           </Text>
-                          <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                          <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                             PNG, JPG up to 10MB
                           </Text>
                         </>
@@ -595,7 +595,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                           : (isDark ? 'border-gray-600 hover:border-blue-500 bg-gray-700/30' : 'border-gray-300 hover:border-[#043b69] bg-gray-50')
                       }`}
                     >
-                      <input
+                      <TextInput
                         type="file"
                         accept="image/*"
                         onChange={(e) => handleFileUpload("idBackPhoto", e)}
@@ -604,17 +604,17 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                       {kycData.idBackPhoto ? (
                         <>
                           <CheckCircle style="w-8 h-8 text-green-500 mb-2" />
-                          <p style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
+                          <Text style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
                             {kycData.idBackPhoto.name}
                           </Text>
                         </>
                       ) : (
                         <>
                           <Upload style={`w-8 h-8 mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
-                          <p style={isDark ? 'text-gray-300' : 'text-gray-600'}>
+                          <Text style={isDark ? 'text-gray-300' : 'text-gray-600'}>
                             Upload back of ID
                           </Text>
-                          <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                          <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                             PNG, JPG up to 10MB
                           </Text>
                         </>
@@ -634,7 +634,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                           : (isDark ? 'border-gray-600 hover:border-blue-500 bg-gray-700/30' : 'border-gray-300 hover:border-[#043b69] bg-gray-50')
                       }`}
                     >
-                      <input
+                      <TextInput
                         type="file"
                         accept="image/*"
                         onChange={(e) => handleFileUpload("selfiePhoto", e)}
@@ -643,17 +643,17 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                       {kycData.selfiePhoto ? (
                         <>
                           <CheckCircle style="w-8 h-8 text-green-500 mb-2" />
-                          <p style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
+                          <Text style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
                             {kycData.selfiePhoto.name}
                           </Text>
                         </>
                       ) : (
                         <>
                           <Camera style={`w-8 h-8 mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
-                          <p style={isDark ? 'text-gray-300' : 'text-gray-600'}>
+                          <Text style={isDark ? 'text-gray-300' : 'text-gray-600'}>
                             Upload selfie holding ID
                           </Text>
-                          <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                          <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                             PNG, JPG up to 10MB
                           </Text>
                         </>
@@ -673,7 +673,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                           : (isDark ? 'border-gray-600 hover:border-blue-500 bg-gray-700/30' : 'border-gray-300 hover:border-[#043b69] bg-gray-50')
                       }`}
                     >
-                      <input
+                      <TextInput
                         type="file"
                         accept="image/*,.pdf"
                         onChange={(e) => handleFileUpload("addressProof", e)}
@@ -682,17 +682,17 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                       {kycData.addressProof ? (
                         <>
                           <CheckCircle style="w-8 h-8 text-green-500 mb-2" />
-                          <p style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
+                          <Text style={`text-sm ${isDark ? 'text-green-400' : 'text-green-700'}`}>
                             {kycData.addressProof.name}
                           </Text>
                         </>
                       ) : (
                         <>
                           <HomeIcon style={`w-8 h-8 mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
-                          <p style={isDark ? 'text-gray-300' : 'text-gray-600'}>
+                          <Text style={isDark ? 'text-gray-300' : 'text-gray-600'}>
                             Upload utility bill or bank statement
                           </Text>
-                          <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                          <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                             PDF, PNG, JPG up to 10MB
                           </Text>
                         </>
@@ -714,7 +714,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
         >
           {currentStep < totalSteps ? (
             <Button
-              onClick={handleNext}
+              onPress={handleNext}
               style={`flex-1 h-12 ${
                 isDark 
                   ? 'bg-[#043b69] hover:bg-[#032d51]' 
@@ -726,7 +726,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
             </Button>
           ) : (
             <Button
-              onClick={handleSubmit}
+              onPress={handleSubmit}
               disabled={isSubmitting}
               style={`flex-1 h-12 ${
                 isDark 
@@ -735,7 +735,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               } text-white ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               {isSubmitting ? (
-                <div style="flex items-center gap-2">
+                <View style="flex items-center gap-2">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}

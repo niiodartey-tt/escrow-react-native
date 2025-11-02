@@ -97,27 +97,27 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
   };
 
   return (
-    <div style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+    <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`sticky top-0 z-10 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b p-4`}
       >
-        <div style="flex items-center justify-between max-w-md mx-auto">
-          <div style="flex items-center gap-4">
+        <View style="flex items-center justify-between max-w-md mx-auto">
+          <View style="flex items-center gap-4">
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={onBack}
+              onPress={onBack}
               style={`p-2 rounded-full ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}
             >
               <ArrowLeft style="w-5 h-5" />
             </motion.button>
-            <h2 style={isDark ? 'text-white' : ''}>Profile</Text>
+            <Text style={isDark ? 'text-white' : ''}>Profile</Text>
           </View>
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => onNavigate("settings")}
+            onPress={() => onNavigate("settings")}
             style={`p-2 rounded-full ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}
           >
             <Settings style="w-5 h-5" />
@@ -125,7 +125,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6">
+      <View style="max-w-md mx-auto p-6">
         {/* Profile Header Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -133,7 +133,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
           transition={{ type: "spring", stiffness: 200 }}
         >
           <Card style={`p-6 shadow-lg mb-6 ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-            <div style="flex items-start gap-4 mb-4">
+            <View style="flex items-start gap-4 mb-4">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 style="relative"
@@ -143,12 +143,12 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                     JD
                   </AvatarFallback>
                 </Avatar>
-                <div style="absolute -bottom-1 -right-1 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full w-6 h-6" />
+                <View style="absolute -bottom-1 -right-1 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full w-6 h-6" />
               </motion.div>
               
-              <div style="flex-1">
-                <div style="flex items-center gap-2 mb-1">
-                  <h3 style={isDark ? 'text-white' : ''}>{profileData.name}</Text>
+              <View style="flex-1">
+                <View style="flex items-center gap-2 mb-1">
+                  <Text style={isDark ? 'text-white' : ''}>{profileData.name}</Text>
                   {kycStatus === "verified" && (
                     <motion.div
                       initial={{ scale: 0 }}
@@ -159,10 +159,10 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                     </motion.div>
                   )}
                 </View>
-                <p style={`text-sm mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                <Text style={`text-sm mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   {profileData.username}
                 </Text>
-                <div style="flex gap-2">
+                <View style="flex gap-2">
                   <Badge style={`border-0 ${
                     kycStatus === "verified"
                       ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
@@ -184,21 +184,21 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
               </View>
             </View>
 
-            <p style={`text-sm mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+            <Text style={`text-sm mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
               {profileData.bio}
             </Text>
 
             {/* User ID */}
-            <div style={`flex items-center justify-between p-3 rounded-lg ${isDark ? 'bg-gray-700' : 'bg-gray-50'}`}>
-              <div style="flex items-center gap-2">
+            <View style={`flex items-center justify-between p-3 rounded-lg ${isDark ? 'bg-gray-700' : 'bg-gray-50'}`}>
+              <View style="flex items-center gap-2">
                 <User style="w-4 h-4 text-gray-500" />
-                <span style={`text-sm font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                <Text style={`text-sm font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                   {profileData.userId}
                 </Text>
               </View>
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={copyUserId}
+                onPress={copyUserId}
                 style={`p-1.5 rounded-lg ${isDark ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}
               >
                 {copiedUserId ? (
@@ -218,32 +218,32 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
           transition={{ delay: 0.1 }}
         >
           <Card style={`p-6 shadow-lg mb-6 ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'} text-white`}>
-            <div style="flex items-center justify-between mb-4">
-              <div style="flex items-center gap-2">
+            <View style="flex items-center justify-between mb-4">
+              <View style="flex items-center gap-2">
                 <DollarSign style="w-5 h-5" />
-                <span style="text-sm opacity-80">Total Balance</Text>
+                <Text style="text-sm opacity-80">Total Balance</Text>
               </View>
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={() => setShowBalance(!showBalance)}
+                onPress={() => setShowBalance(!showBalance)}
                 style="p-1.5 hover:bg-white/10 rounded"
               >
                 {showBalance ? <Eye style="w-4 h-4" /> : <EyeOff style="w-4 h-4" />}
               </motion.button>
             </View>
             
-            <div style="text-3xl mb-4">
+            <View style="text-3xl mb-4">
               {showBalance ? `$${(profileData.walletBalance + profileData.escrowBalance).toFixed(2)}` : "••••••"}
             </View>
             
-            <div style="flex justify-between items-center pt-4 border-t border-white/20">
+            <View style="flex justify-between items-center pt-4 border-t border-white/20">
               <View>
-                <div style="text-sm opacity-80">Available</View>
-                <div style="text-xl">{showBalance ? `$${profileData.walletBalance.toFixed(2)}` : "••••"}</View>
+                <View style="text-sm opacity-80">Available</View>
+                <View style="text-xl">{showBalance ? `$${profileData.walletBalance.toFixed(2)}` : "••••"}</View>
               </View>
-              <div style="text-right">
-                <div style="text-sm opacity-80">In Escrow</View>
-                <div style="text-xl">{showBalance ? `$${profileData.escrowBalance.toFixed(2)}` : "••••"}</View>
+              <View style="text-right">
+                <View style="text-sm opacity-80">In Escrow</View>
+                <View style="text-xl">{showBalance ? `$${profileData.escrowBalance.toFixed(2)}` : "••••"}</View>
               </View>
             </View>
           </Card>
@@ -268,11 +268,11 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                 whileTap={{ scale: 0.98 }}
               >
                 <Card style={`p-4 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                  <div style={`p-2 w-fit rounded-lg ${stat.bgColor} mb-3`}>
+                  <View style={`p-2 w-fit rounded-lg ${stat.bgColor} mb-3`}>
                     <Icon style={`w-5 h-5 ${stat.color}`} />
                   </View>
-                  <div style={`text-2xl mb-1 ${isDark ? 'text-white' : ''}`}>{stat.value}</View>
-                  <div style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{stat.label}</View>
+                  <View style={`text-2xl mb-1 ${isDark ? 'text-white' : ''}`}>{stat.value}</View>
+                  <View style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{stat.label}</View>
                 </Card>
               </motion.div>
             );
@@ -295,32 +295,32 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
             <TabsContent value="overview" style="space-y-4">
               {/* Contact Information */}
               <Card style={`p-4 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                <h4 style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
+                <Text style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
                   <User style="w-4 h-4" />
                   Contact Information
-                </h4>
-                <div style="space-y-3">
-                  <div style="flex items-center gap-3">
+                </Text>
+                <View style="space-y-3">
+                  <View style="flex items-center gap-3">
                     <Mail style="w-4 h-4 text-gray-500" />
-                    <div style="flex-1">
-                      <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Email</Text>
-                      <p style={`text-sm ${isDark ? 'text-white' : ''}`}>{profileData.email}</Text>
+                    <View style="flex-1">
+                      <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Email</Text>
+                      <Text style={`text-sm ${isDark ? 'text-white' : ''}`}>{profileData.email}</Text>
                     </View>
                   </View>
                   <Separator style={isDark ? 'bg-gray-700' : ''} />
-                  <div style="flex items-center gap-3">
+                  <View style="flex items-center gap-3">
                     <Phone style="w-4 h-4 text-gray-500" />
-                    <div style="flex-1">
-                      <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Phone</Text>
-                      <p style={`text-sm ${isDark ? 'text-white' : ''}`}>{profileData.phone}</Text>
+                    <View style="flex-1">
+                      <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Phone</Text>
+                      <Text style={`text-sm ${isDark ? 'text-white' : ''}`}>{profileData.phone}</Text>
                     </View>
                   </View>
                   <Separator style={isDark ? 'bg-gray-700' : ''} />
-                  <div style="flex items-center gap-3">
+                  <View style="flex items-center gap-3">
                     <MapPin style="w-4 h-4 text-gray-500" />
-                    <div style="flex-1">
-                      <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Location</Text>
-                      <p style={`text-sm ${isDark ? 'text-white' : ''}`}>{profileData.location}</Text>
+                    <View style="flex-1">
+                      <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Location</Text>
+                      <Text style={`text-sm ${isDark ? 'text-white' : ''}`}>{profileData.location}</Text>
                     </View>
                   </View>
                 </View>
@@ -328,34 +328,34 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
 
               {/* Transaction Statistics */}
               <Card style={`p-4 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                <h4 style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
+                <Text style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
                   <TrendingUp style="w-4 h-4" />
                   Transaction Statistics
-                </h4>
-                <div style="space-y-4">
+                </Text>
+                <View style="space-y-4">
                   <View>
-                    <div style="flex justify-between mb-2">
-                      <span style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Total Volume</Text>
-                      <span style={isDark ? 'text-white' : ''}>${transactionStats.totalVolume.toLocaleString()}</Text>
+                    <View style="flex justify-between mb-2">
+                      <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Total Volume</Text>
+                      <Text style={isDark ? 'text-white' : ''}>${transactionStats.totalVolume.toLocaleString()}</Text>
                     </View>
                     <Progress value={75} style="h-2" />
                   </View>
                   <View>
-                    <div style="flex justify-between mb-2">
-                      <span style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Avg Transaction</Text>
-                      <span style={isDark ? 'text-white' : ''}>${transactionStats.avgTransactionValue.toFixed(2)}</Text>
+                    <View style="flex justify-between mb-2">
+                      <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Avg Transaction</Text>
+                      <Text style={isDark ? 'text-white' : ''}>${transactionStats.avgTransactionValue.toFixed(2)}</Text>
                     </View>
                     <Progress value={60} style="h-2" />
                   </View>
                   <Separator style={isDark ? 'bg-gray-700' : ''} />
-                  <div style="grid grid-cols-2 gap-4">
+                  <View style="grid grid-cols-2 gap-4">
                     <View>
-                      <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Completed</Text>
-                      <p style={`text-2xl ${isDark ? 'text-white' : ''}`}>{transactionStats.completedDeals}</Text>
+                      <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Completed</Text>
+                      <Text style={`text-2xl ${isDark ? 'text-white' : ''}`}>{transactionStats.completedDeals}</Text>
                     </View>
                     <View>
-                      <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Active</Text>
-                      <p style={`text-2xl ${isDark ? 'text-white' : ''}`}>{transactionStats.activeDeals}</Text>
+                      <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Active</Text>
+                      <Text style={`text-2xl ${isDark ? 'text-white' : ''}`}>{transactionStats.activeDeals}</Text>
                     </View>
                   </View>
                 </View>
@@ -373,13 +373,13 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                     transition={{ delay: index * 0.1 }}
                   >
                     <Card style={`p-4 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : ''} ${achievement.earned ? '' : 'opacity-50'}`}>
-                      <div style="flex items-center gap-3">
-                        <div style={`p-3 rounded-lg ${achievement.earned ? 'bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900/30 dark:to-yellow-800/30' : isDark ? 'bg-gray-700' : 'bg-gray-100'}`}>
+                      <View style="flex items-center gap-3">
+                        <View style={`p-3 rounded-lg ${achievement.earned ? 'bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900/30 dark:to-yellow-800/30' : isDark ? 'bg-gray-700' : 'bg-gray-100'}`}>
                           <Icon style={`w-6 h-6 ${achievement.earned ? achievement.color : 'text-gray-400'}`} />
                         </View>
-                        <div style="flex-1">
-                          <div style={`mb-1 ${isDark ? 'text-white' : ''}`}>{achievement.title}</View>
-                          <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                        <View style="flex-1">
+                          <View style={`mb-1 ${isDark ? 'text-white' : ''}`}>{achievement.title}</View>
+                          <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                             {achievement.earned ? "Earned" : "Not yet earned"}
                           </Text>
                         </View>
@@ -402,8 +402,8 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                   transition={{ delay: index * 0.1 }}
                 >
                   <Card style={`p-4 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                    <div style="flex items-start gap-3">
-                      <div style={`p-2 rounded-lg ${
+                    <View style="flex items-start gap-3">
+                      <View style={`p-2 rounded-lg ${
                         activity.type === 'success' ? 'bg-green-100 dark:bg-green-900/30' :
                         activity.type === 'payment' ? 'bg-purple-100 dark:bg-purple-900/30' :
                         'bg-blue-100 dark:bg-blue-900/30'
@@ -414,10 +414,10 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                           'text-blue-600'
                         }`} />
                       </View>
-                      <div style="flex-1">
-                        <div style={`mb-1 ${isDark ? 'text-white' : ''}`}>{activity.action}</View>
-                        <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{activity.detail}</Text>
-                        <p style={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{activity.time}</Text>
+                      <View style="flex-1">
+                        <View style={`mb-1 ${isDark ? 'text-white' : ''}`}>{activity.action}</View>
+                        <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{activity.detail}</Text>
+                        <Text style={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{activity.time}</Text>
                       </View>
                     </View>
                   </Card>
@@ -436,7 +436,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
         >
           <Button
             style={`w-full h-12 ${isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-[#043b69] hover:bg-[#032d51]'}`}
-            onClick={() => onNavigate("edit-profile")}
+            onPress={() => onNavigate("edit-profile")}
           >
             <Edit2 style="w-4 h-4 mr-2" />
             Edit Profile
@@ -445,7 +445,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
           <Button
             variant="outline"
             style={`w-full h-12 ${isDark ? 'border-red-600 text-red-400 hover:bg-red-900/20' : 'text-red-600 hover:bg-red-50'}`}
-            onClick={() => toast.info("Logout feature")}
+            onPress={() => toast.info("Logout feature")}
           >
             <LogOut style="w-4 h-4 mr-2" />
             Logout

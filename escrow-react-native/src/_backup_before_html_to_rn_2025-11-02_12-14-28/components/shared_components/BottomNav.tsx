@@ -18,8 +18,8 @@ export function BottomNav({ activeScreen, onNavigate, onCreateTransaction }: Bot
   ];
 
   return (
-    <div style="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 safe-area-bottom z-40">
-      <div style="max-w-md mx-auto flex items-center justify-around px-1 sm:px-2 py-2 sm:py-3">
+    <View style="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 safe-area-bottom z-40">
+      <View style="max-w-md mx-auto flex items-center justify-around px-1 sm:px-2 py-2 sm:py-3">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeScreen === item.id;
@@ -31,10 +31,10 @@ export function BottomNav({ activeScreen, onNavigate, onCreateTransaction }: Bot
                 key={item.id}
                 whileTap={{ scale: 0.9 }}
                 whileHover={{ scale: 1.1 }}
-                onClick={onCreateTransaction}
+                onPress={onCreateTransaction}
                 style="relative -mt-6 sm:-mt-8"
               >
-                <div style="bg-[#043b69] p-3 sm:p-4 shadow-lg rounded-full">
+                <View style="bg-[#043b69] p-3 sm:p-4 shadow-lg rounded-full">
                   <Icon style="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </View>
               </motion.button>
@@ -45,7 +45,7 @@ export function BottomNav({ activeScreen, onNavigate, onCreateTransaction }: Bot
             <motion.button
               key={item.id}
               whileTap={{ scale: 0.95 }}
-              onClick={() => onNavigate(item.id)}
+              onPress={() => onNavigate(item.id)}
               style="flex flex-col items-center gap-0.5 sm:gap-1 px-2 sm:px-4 py-2 relative min-w-[60px] sm:min-w-[70px]"
             >
               <Icon
@@ -53,7 +53,7 @@ export function BottomNav({ activeScreen, onNavigate, onCreateTransaction }: Bot
                   isActive ? "text-[#043b69] dark:text-blue-400" : "text-gray-400 dark:text-gray-500"
                 }`}
               />
-              <span style={`text-[10px] sm:text-xs transition-colors ${
+              <Text style={`text-[10px] sm:text-xs transition-colors ${
                 isActive ? "text-[#043b69] dark:text-blue-400" : "text-gray-400 dark:text-gray-500"
               }`}>
                 {item.label}

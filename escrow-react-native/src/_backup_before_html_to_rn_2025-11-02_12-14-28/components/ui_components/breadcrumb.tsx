@@ -6,7 +6,7 @@ import { ChevronRight, MoreHorizontal } from "lucide-react@0.487.0";
 import { cn } from "./utils";
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
-  return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />;
+  return <View aria-label="breadcrumb" data-slot="breadcrumb" {...props} />;
 }
 
 function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
@@ -24,7 +24,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
 
 function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
   return (
-    <li
+    <Text
       data-slot="breadcrumb-item"
       style={cn("inline-flex items-center gap-1.5", className)}
       {...props}
@@ -52,7 +52,7 @@ function BreadcrumbLink({
 
 function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Text
       data-slot="breadcrumb-page"
       role="link"
       aria-disabled="true"
@@ -69,7 +69,7 @@ function BreadcrumbSeparator({
   ...props
 }: React.ComponentProps<"li">) {
   return (
-    <li
+    <Text
       data-slot="breadcrumb-separator"
       role="presentation"
       aria-hidden="true"
@@ -77,7 +77,7 @@ function BreadcrumbSeparator({
       {...props}
     >
       {children ?? <ChevronRight />}
-    </li>
+    </Text>
   );
 }
 
@@ -86,7 +86,7 @@ function BreadcrumbEllipsis({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Text
       data-slot="breadcrumb-ellipsis"
       role="presentation"
       aria-hidden="true"
@@ -94,7 +94,7 @@ function BreadcrumbEllipsis({
       {...props}
     >
       <MoreHorizontal style="size-4" />
-      <span style="sr-only">More</Text>
+      <Text style="sr-only">More</Text>
     </Text>
   );
 }

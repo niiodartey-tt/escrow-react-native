@@ -59,7 +59,7 @@ function AccordionContent({
       style="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
       {...props}
     >
-      <div style={cn("pt-0 pb-4", className)}>{children}</View>
+      <View style={cn("pt-0 pb-4", className)}>{children}</View>
     </AccordionPrimitive.Content>
   );
 }

@@ -105,7 +105,7 @@ function NavigationMenuViewport({
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
   return (
-    <div
+    <View
       style={cn(
         "absolute top-full left-0 isolate z-50 flex justify-center",
       )}
@@ -151,7 +151,7 @@ function NavigationMenuIndicator({
       )}
       {...props}
     >
-      <div style="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />
+      <View style="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />
     </NavigationMenuPrimitive.Indicator>
   );
 }

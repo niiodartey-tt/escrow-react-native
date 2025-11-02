@@ -24,12 +24,12 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         transition={{ duration: 0.6, ease: "easeOut" }}
         style="flex flex-col items-center gap-5 sm:gap-6"
       >
-        <div style="bg-white/10 p-5 sm:p-6 rounded-2xl sm:rounded-3xl backdrop-blur-sm">
+        <View style="bg-white/10 p-5 sm:p-6 rounded-2xl sm:rounded-3xl backdrop-blur-sm">
           <Shield style="w-16 h-16 sm:w-20 sm:h-20 text-white" />
         </View>
-        <div style="text-center">
-          <h1 style="text-white mb-2 text-2xl sm:text-3xl">SecureEscrow</Text>
-          <p style="text-white/70 text-sm sm:text-base">Secure Escrow for Every Deal</Text>
+        <View style="text-center">
+          <Text style="text-white mb-2 text-2xl sm:text-3xl">SecureEscrow</Text>
+          <Text style="text-white/70 text-sm sm:text-base">Secure Escrow for Every Deal</Text>
         </View>
       </motion.div>
     </motion.div>

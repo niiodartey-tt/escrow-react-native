@@ -51,27 +51,27 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
   };
 
   return (
-    <div style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+    <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`sticky top-0 z-10 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b p-4`}
       >
-        <div style="flex items-center justify-between max-w-md mx-auto">
-          <div style="flex items-center gap-4">
+        <View style="flex items-center justify-between max-w-md mx-auto">
+          <View style="flex items-center gap-4">
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={onBack}
+              onPress={onBack}
               style={`p-2 rounded-full ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}
             >
               <ArrowLeft style="w-5 h-5" />
             </motion.button>
-            <h2 style={isDark ? 'text-white' : ''}>Edit Profile</Text>
+            <Text style={isDark ? 'text-white' : ''}>Edit Profile</Text>
           </View>
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={handleSubmit}
+            onPress={handleSubmit}
             disabled={isLoading}
             style={`flex items-center gap-2 px-4 py-2 rounded-full ${
               isDark 
@@ -85,8 +85,8 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6">
-        <form onSubmit={handleSubmit} style="space-y-6">
+      <View style="max-w-md mx-auto p-6">
+        <View onSubmit={handleSubmit} style="space-y-6">
           {/* Profile Picture */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -94,7 +94,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
             transition={{ delay: 0.1 }}
           >
             <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-              <div style="flex flex-col items-center">
+              <View style="flex flex-col items-center">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   style="relative cursor-pointer"
@@ -114,7 +114,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
                     <Camera style="w-4 h-4" />
                   </motion.div>
                 </motion.div>
-                <p style={`text-sm mt-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                <Text style={`text-sm mt-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   Click to change profile picture
                 </Text>
               </View>
@@ -128,12 +128,12 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
             transition={{ delay: 0.2 }}
           >
             <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-              <h4 style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
+              <Text style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
                 <User style="w-4 h-4" />
                 Personal Information
-              </h4>
+              </Text>
               
-              <div style="space-y-4">
+              <View style="space-y-4">
                 <View>
                   <Label style={isDark ? 'text-gray-300' : ''}>Full Name</Label>
                   <Input
@@ -152,7 +152,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
                     style={`mt-2 ${isDark ? 'bg-gray-700 border-gray-600 text-white' : ''}`}
                     placeholder="@username"
                   />
-                  <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     Your unique username on the platform
                   </Text>
                 </View>
@@ -177,12 +177,12 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
             transition={{ delay: 0.3 }}
           >
             <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-              <h4 style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
+              <Text style={`mb-4 flex items-center gap-2 ${isDark ? 'text-white' : ''}`}>
                 <Mail style="w-4 h-4" />
                 Contact Information
-              </h4>
+              </Text>
               
-              <div style="space-y-4">
+              <View style="space-y-4">
                 <View>
                   <Label style={isDark ? 'text-gray-300' : ''}>Email Address</Label>
                   <Input
@@ -207,7 +207,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
 
                 <View>
                   <Label style={isDark ? 'text-gray-300' : ''}>Location</Label>
-                  <div style="relative mt-2">
+                  <View style="relative mt-2">
                     <MapPin style={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
                     <Input
                       value={formData.location}
@@ -237,7 +237,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
               } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               {isLoading ? (
-                <div style="flex items-center gap-2">
+                <View style="flex items-center gap-2">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -253,7 +253,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
               )}
             </Button>
           </motion.div>
-        </form>
+        </View>
       </View>
     </View>
   );

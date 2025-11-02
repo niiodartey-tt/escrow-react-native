@@ -51,35 +51,35 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
   };
 
   return (
-    <div style="h-screen bg-[#F9FAFB] dark:bg-gray-900 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 overflow-y-auto">
       {/* Header */}
-      <div style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6 sm:p-8 pb-12 sm:pb-16">
+      <View style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6 sm:p-8 pb-12 sm:pb-16">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           style="max-w-md mx-auto"
         >
-          <h1 style="text-2xl sm:text-3xl mb-2">Welcome Back</Text>
-          <p style="text-sm opacity-80">Sign in to continue</Text>
+          <Text style="text-2xl sm:text-3xl mb-2">Welcome Back</Text>
+          <Text style="text-sm opacity-80">Sign in to continue</Text>
         </motion.div>
       </View>
 
       {/* Form Card */}
-      <div style="max-w-md mx-auto px-4 sm:px-6 -mt-8">
+      <View style="max-w-md mx-auto px-4 sm:px-6 -mt-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style="bg-white dark:bg-gray-800 shadow-lg p-5 sm:p-6"
         >
-          <form onSubmit={handleSubmit} style="space-y-5">
+          <View onSubmit={handleSubmit} style="space-y-5">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
               <Label htmlFor="email">Email Address</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <Mail style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="email"
@@ -99,7 +99,7 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
               transition={{ delay: 0.3 }}
             >
               <Label htmlFor="password">Password</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <Lock style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="password"
@@ -112,7 +112,7 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
                 />
                 <TouchableOpacity
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
+                  onPress={() => setShowPassword(!showPassword)}
                   style="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showPassword ? <EyeOff style="w-5 h-5" /> : <Eye style="w-5 h-5" />}
@@ -126,7 +126,7 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
               transition={{ delay: 0.4 }}
               style="flex items-center justify-between"
             >
-              <div style="flex items-center gap-2">
+              <View style="flex items-center gap-2">
                 <Checkbox
                   id="remember"
                   checked={formData.rememberMe}
@@ -134,13 +134,13 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
                     setFormData({ ...formData, rememberMe: checked as boolean })
                   }
                 />
-                <label htmlFor="remember" style="text-sm text-gray-600 cursor-pointer">
+                <Text htmlFor="remember" style="text-sm text-gray-600 cursor-pointer">
                   Remember me
-                </label>
+                </Text>
               </View>
               <TouchableOpacity
                 type="button"
-                onClick={() => onNavigate("forgot-password")}
+                onPress={() => onNavigate("forgot-password")}
                 style="text-sm text-[#043b69] hover:underline"
               >
                 Forgot Password?
@@ -168,16 +168,16 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
                 transition={{ delay: 0.55 }}
                 style="relative"
               >
-                <div style="relative flex items-center justify-center my-4">
-                  <div style="border-t border-gray-200 dark:border-gray-700 w-full absolute"></View>
-                  <span style="bg-white dark:bg-gray-800 px-3 text-xs text-gray-500 dark:text-gray-400 relative">
+                <View style="relative flex items-center justify-center my-4">
+                  <View style="border-t border-gray-200 dark:border-gray-700 w-full absolute"></View>
+                  <Text style="bg-white dark:bg-gray-800 px-3 text-xs text-gray-500 dark:text-gray-400 relative">
                     OR
                   </Text>
                 </View>
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={handleBiometricLogin}
+                  onPress={handleBiometricLogin}
                   style="w-full h-11 sm:h-12 flex items-center justify-center gap-2"
                 >
                   <Fingerprint style="w-5 h-5" />
@@ -185,7 +185,7 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
                 </Button>
               </motion.div>
             )}
-          </form>
+          </View>
         </motion.div>
 
         {/* Sign Up Link */}
@@ -195,10 +195,10 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
           transition={{ delay: 0.6 }}
           style="text-center mt-6 mb-8"
         >
-          <p style="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+          <Text style="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
             Don't have an account?{" "}
             <TouchableOpacity
-              onClick={() => onNavigate("signup")}
+              onPress={() => onNavigate("signup")}
               style="text-[#043b69] dark:text-blue-400 hover:underline"
             >
               Sign Up

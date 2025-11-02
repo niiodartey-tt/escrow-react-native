@@ -66,7 +66,7 @@ function DrawerContent({
         )}
         {...props}
       >
-        <div style="bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+        <View style="bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
@@ -75,7 +75,7 @@ function DrawerContent({
 
 function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="drawer-header"
       style={cn("flex flex-col gap-1.5 p-4", className)}
       {...props}
@@ -85,7 +85,7 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
 
 function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
+    <View
       data-slot="drawer-footer"
       style={cn("mt-auto flex flex-col gap-2 p-4", className)}
       {...props}

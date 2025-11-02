@@ -39,13 +39,13 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
   };
 
   return (
-    <div style="h-screen bg-[#F9FAFB] dark:bg-gray-900 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 overflow-y-auto">
       {/* Header */}
-      <div style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-5 sm:p-6">
-        <div style="max-w-md mx-auto">
+      <View style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-5 sm:p-6">
+        <View style="max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-white/10 mb-3 sm:mb-4"
           >
             <ArrowLeft style="w-5 h-5" />
@@ -54,28 +54,28 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 style="text-2xl sm:text-3xl mb-2">Create Account</Text>
-            <p style="text-sm opacity-80">Join us today</Text>
+            <Text style="text-2xl sm:text-3xl mb-2">Create Account</Text>
+            <Text style="text-sm opacity-80">Join us today</Text>
           </motion.div>
         </View>
       </View>
 
       {/* Form */}
-      <div style="max-w-md mx-auto px-4 sm:px-6 py-5 sm:py-6">
+      <View style="max-w-md mx-auto px-4 sm:px-6 py-5 sm:py-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style="bg-white dark:bg-gray-800 shadow-lg p-5 sm:p-6"
         >
-          <form onSubmit={handleSubmit} style="space-y-4">
+          <View onSubmit={handleSubmit} style="space-y-4">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
               <Label htmlFor="fullName">Full Name</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <User style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="fullName"
@@ -95,7 +95,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
               transition={{ delay: 0.25 }}
             >
               <Label htmlFor="username">Username</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <User style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="username"
@@ -107,7 +107,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                   required
                 />
               </View>
-              <p style="text-xs text-gray-500 mt-1">This will be used for transactions</Text>
+              <Text style="text-xs text-gray-500 mt-1">This will be used for transactions</Text>
             </motion.div>
 
             <motion.div
@@ -116,7 +116,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
               transition={{ delay: 0.3 }}
             >
               <Label htmlFor="email">Email Address</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <Mail style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="email"
@@ -136,7 +136,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
               transition={{ delay: 0.35 }}
             >
               <Label htmlFor="phone">Phone Number</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <Phone style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="phone"
@@ -148,7 +148,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                   required
                 />
               </View>
-              <p style="text-xs text-gray-500 mt-1">Can also be used for transactions</Text>
+              <Text style="text-xs text-gray-500 mt-1">Can also be used for transactions</Text>
             </motion.div>
 
             <motion.div
@@ -157,7 +157,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
               transition={{ delay: 0.4 }}
             >
               <Label htmlFor="password">Password</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <Lock style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="password"
@@ -170,7 +170,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                 />
                 <TouchableOpacity
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
+                  onPress={() => setShowPassword(!showPassword)}
                   style="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showPassword ? <EyeOff style="w-5 h-5" /> : <Eye style="w-5 h-5" />}
@@ -184,7 +184,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
               transition={{ delay: 0.45 }}
             >
               <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <div style="relative mt-2">
+              <View style="relative mt-2">
                 <Lock style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
                   id="confirmPassword"
@@ -197,7 +197,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                 />
                 <TouchableOpacity
                   type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  onPress={() => setShowConfirmPassword(!showConfirmPassword)}
                   style="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showConfirmPassword ? <EyeOff style="w-5 h-5" /> : <Eye style="w-5 h-5" />}
@@ -219,11 +219,11 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                 }
                 style="mt-1"
               />
-              <label htmlFor="terms" style="text-sm text-gray-600 cursor-pointer">
+              <Text htmlFor="terms" style="text-sm text-gray-600 cursor-pointer">
                 I agree to the{" "}
-                <span style="text-[#043b69] hover:underline">Terms of Service</Text> and{" "}
-                <span style="text-[#043b69] hover:underline">Privacy Policy</Text>
-              </label>
+                <Text style="text-[#043b69] hover:underline">Terms of Service</Text> and{" "}
+                <Text style="text-[#043b69] hover:underline">Privacy Policy</Text>
+              </Text>
             </motion.div>
 
             <motion.div
@@ -238,7 +238,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                 Create Account
               </Button>
             </motion.div>
-          </form>
+          </View>
         </motion.div>
 
         {/* Sign In Link */}
@@ -248,10 +248,10 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
           transition={{ delay: 0.6 }}
           style="text-center mt-5 sm:mt-6 mb-6 sm:mb-8"
         >
-          <p style="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+          <Text style="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
             Already have an account?{" "}
             <TouchableOpacity
-              onClick={onBack}
+              onPress={onBack}
               style="text-[#043b69] dark:text-blue-400 hover:underline"
             >
               Sign In

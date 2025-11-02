@@ -78,7 +78,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
   ];
 
   return (
-    <div style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+    <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -89,23 +89,23 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
             : 'bg-gradient-to-br from-red-600 to-red-700'
         } text-white p-6`}
       >
-        <div style="flex items-center gap-4 max-w-md mx-auto">
+        <View style="flex items-center gap-4 max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-white/10 rounded-full"
           >
             <ArrowLeft style="w-5 h-5" />
           </motion.button>
-          <div style="flex-1">
+          <View style="flex-1">
             <Text style={{fontSize:20,fontWeight:"600"}}>Raise Dispute</Text>
-            <p style="text-xs opacity-80">Transaction: {transaction.id}</Text>
+            <Text style="text-xs opacity-80">Transaction: {transaction.id}</Text>
           </View>
           <AlertTriangle style="w-6 h-6" />
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6 space-y-6">
+      <View style="max-w-md mx-auto p-6 space-y-6">
         {/* Warning Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -117,13 +117,13 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
               ? 'bg-yellow-900/20 border-yellow-700' 
               : 'bg-yellow-50 border-yellow-200'
           }`}>
-            <div style="flex gap-3">
+            <View style="flex gap-3">
               <AlertTriangle style="w-5 h-5 text-yellow-600 dark:text-yellow-500 mt-0.5 flex-shrink-0" />
               <View>
-                <h4 style={`mb-1 ${isDark ? 'text-yellow-200' : 'text-yellow-800'}`}>
+                <Text style={`mb-1 ${isDark ? 'text-yellow-200' : 'text-yellow-800'}`}>
                   Important Information
-                </h4>
-                <p style={`text-sm ${isDark ? 'text-yellow-300' : 'text-yellow-700'}`}>
+                </Text>
+                <Text style={`text-sm ${isDark ? 'text-yellow-300' : 'text-yellow-700'}`}>
                   Raising a dispute will pause this transaction and notify both parties. 
                   Our support team will review your case within 24-48 hours. Please provide 
                   detailed information and evidence to support your claim.
@@ -140,24 +140,24 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
           transition={{ delay: 0.2 }}
         >
           <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-            <h4 style={`mb-4 ${isDark ? 'text-white' : ''}`}>Transaction Details</h4>
-            <div style="space-y-3">
-              <div style="flex justify-between items-start">
-                <span style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            <Text style={`mb-4 ${isDark ? 'text-white' : ''}`}>Transaction Details</Text>
+            <View style="space-y-3">
+              <View style="flex justify-between items-start">
+                <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   Item
                 </Text>
-                <span style={isDark ? 'text-white' : ''}>{transaction.name || transaction.title}</Text>
+                <Text style={isDark ? 'text-white' : ''}>{transaction.name || transaction.title}</Text>
               </View>
               <Separator style={isDark ? 'bg-gray-700' : ''} />
-              <div style="flex justify-between items-start">
-                <span style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              <View style="flex justify-between items-start">
+                <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   Amount
                 </Text>
-                <span style={isDark ? 'text-white' : ''}>${transaction.amount}</Text>
+                <Text style={isDark ? 'text-white' : ''}>${transaction.amount}</Text>
               </View>
               <Separator style={isDark ? 'bg-gray-700' : ''} />
-              <div style="flex justify-between items-start">
-                <span style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              <View style="flex justify-between items-start">
+                <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   Status
                 </Text>
                 <Badge style="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-0">
@@ -169,16 +169,16 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
         </motion.div>
 
         {/* Dispute Form */}
-        <form onSubmit={handleSubmit} style="space-y-6">
+        <View onSubmit={handleSubmit} style="space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-              <h4 style={`mb-4 ${isDark ? 'text-white' : ''}`}>Dispute Information</h4>
+              <Text style={`mb-4 ${isDark ? 'text-white' : ''}`}>Dispute Information</Text>
               
-              <div style="space-y-4">
+              <View style="space-y-4">
                 <View>
                   <Label style={isDark ? 'text-gray-300' : ''}>Reason for Dispute *</Label>
                   <Select 
@@ -211,11 +211,11 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
                     placeholder="Please provide detailed information about the issue. Include dates, communications with the other party, and any relevant details that will help us resolve this dispute."
                     required
                   />
-                  <div style="flex justify-between items-center mt-1">
-                    <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <View style="flex justify-between items-center mt-1">
+                    <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                       Minimum 50 characters required
                     </Text>
-                    <p style={`text-xs ${
+                    <Text style={`text-xs ${
                       formData.description.length >= 50 
                         ? (isDark ? 'text-green-400' : 'text-green-600')
                         : (isDark ? 'text-gray-400' : 'text-gray-500')
@@ -235,9 +235,9 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
             transition={{ delay: 0.4 }}
           >
             <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-              <div style="flex items-center gap-2 mb-4">
+              <View style="flex items-center gap-2 mb-4">
                 <FileText style="w-4 h-4" />
-                <h4 style={isDark ? 'text-white' : ''}>Supporting Evidence (Optional)</h4>
+                <Text style={isDark ? 'text-white' : ''}>Supporting Evidence (Optional)</Text>
               </View>
               
               <motion.div
@@ -250,18 +250,18 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
                 }`}
               >
                 <Upload style={`w-8 h-8 mx-auto mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
-                <p style={isDark ? 'text-gray-300' : 'text-gray-600'}>
+                <Text style={isDark ? 'text-gray-300' : 'text-gray-600'}>
                   Click to upload or drag and drop
                 </Text>
-                <p style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   Images, PDFs, screenshots, chat logs, etc. (Max 10MB per file)
                 </Text>
               </motion.div>
 
-              <div style={`mt-4 p-3 rounded-lg ${
+              <View style={`mt-4 p-3 rounded-lg ${
                 isDark ? 'bg-gray-700' : 'bg-blue-50'
               }`}>
-                <p style={`text-sm ${isDark ? 'text-gray-300' : 'text-blue-800'}`}>
+                <Text style={`text-sm ${isDark ? 'text-gray-300' : 'text-blue-800'}`}>
                   <strong>Tip:</strong> Include screenshots of conversations, photos of the item, 
                   shipping receipts, or any other relevant documentation to strengthen your case.
                 </Text>
@@ -276,43 +276,43 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
             transition={{ delay: 0.5 }}
           >
             <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-              <h4 style={`mb-4 ${isDark ? 'text-white' : ''}`}>What Happens Next?</h4>
-              <div style="space-y-3">
-                <div style="flex gap-3">
-                  <div style={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+              <Text style={`mb-4 ${isDark ? 'text-white' : ''}`}>What Happens Next?</Text>
+              <View style="space-y-3">
+                <View style="flex gap-3">
+                  <View style={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-100 text-blue-600'
                   }`}>
                     1
                   </View>
                   <View>
-                    <h5 style={isDark ? 'text-white' : ''}>Review Period</h5>
-                    <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <Text style={isDark ? 'text-white' : ''}>Review Period</Text>
+                    <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                       Our team will review your dispute within 24-48 hours
                     </Text>
                   </View>
                 </View>
-                <div style="flex gap-3">
-                  <div style={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                <View style="flex gap-3">
+                  <View style={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-100 text-blue-600'
                   }`}>
                     2
                   </View>
                   <View>
-                    <h5 style={isDark ? 'text-white' : ''}>Investigation</h5>
-                    <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <Text style={isDark ? 'text-white' : ''}>Investigation</Text>
+                    <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                       We'll contact both parties and review all evidence
                     </Text>
                   </View>
                 </View>
-                <div style="flex gap-3">
-                  <div style={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                <View style="flex gap-3">
+                  <View style={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-100 text-blue-600'
                   }`}>
                     3
                   </View>
                   <View>
-                    <h5 style={isDark ? 'text-white' : ''}>Resolution</h5>
-                    <p style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <Text style={isDark ? 'text-white' : ''}>Resolution</Text>
+                    <Text style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                       A fair decision will be made and funds distributed accordingly
                     </Text>
                   </View>
@@ -340,7 +340,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
               }`}
             >
               {isSubmitting ? (
-                <div style="flex items-center gap-2">
+                <View style="flex items-center gap-2">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -359,7 +359,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
             <Button
               type="button"
               variant="outline"
-              onClick={onBack}
+              onPress={onBack}
               style={`w-full h-12 ${
                 isDark 
                   ? 'border-gray-600 text-gray-300 hover:bg-gray-800' 
@@ -369,7 +369,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
               Cancel
             </Button>
           </motion.div>
-        </form>
+        </View>
       </View>
     </View>
   );

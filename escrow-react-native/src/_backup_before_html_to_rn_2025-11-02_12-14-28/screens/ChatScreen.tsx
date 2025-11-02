@@ -52,18 +52,18 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
   };
 
   return (
-    <div style={`h-screen ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'} flex flex-col`}>
+    <View style={`h-screen ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'} flex flex-col`}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b p-4`}
       >
-        <div style="max-w-md mx-auto">
-          <div style="flex items-center gap-3 mb-3">
+        <View style="max-w-md mx-auto">
+          <View style="flex items-center gap-3 mb-3">
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={onBack}
+              onPress={onBack}
               style={`p-2 rounded-full ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}
             >
               <ArrowLeft style="w-5 h-5" />
@@ -73,9 +73,9 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
                 {chat?.avatar || "AS"}
               </AvatarFallback>
             </Avatar>
-            <div style="flex-1">
-              <div style={isDark ? 'text-white' : ''}>{chat?.name || "Alice Smith"}</View>
-              <p style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Online</Text>
+            <View style="flex-1">
+              <View style={isDark ? 'text-white' : ''}>{chat?.name || "Alice Smith"}</View>
+              <Text style={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Online</Text>
             </View>
           </View>
           <Badge variant="outline" style={`${isDark ? 'border-blue-700 text-blue-300' : 'border-blue-200 text-blue-700'}`}>
@@ -85,8 +85,8 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
       </motion.div>
 
       {/* Messages */}
-      <div style="flex-1 overflow-y-auto p-4">
-        <div style="max-w-md mx-auto space-y-4">
+      <View style="flex-1 overflow-y-auto p-4">
+        <View style="max-w-md mx-auto space-y-4">
           {messages.map((msg, index) => (
             <motion.div
               key={msg.id}
@@ -101,7 +101,7 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
                     : "justify-start"
               }`}
             >
-              <div
+              <View
                 style={`${
                   msg.type === "escrow"
                     ? isDark 
@@ -116,8 +116,8 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
                         : "max-w-[75%] bg-white shadow-sm rounded-2xl px-4 py-2"
                 }`}
               >
-                <p style="whitespace-pre-line">{msg.text}</Text>
-                <p style={`text-xs mt-1 ${
+                <Text style="whitespace-pre-line">{msg.text}</Text>
+                <Text style={`text-xs mt-1 ${
                   msg.type === "escrow"
                     ? "text-blue-700 text-center"
                     : msg.sender === "me" 
@@ -136,8 +136,8 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
             animate={{ opacity: 1 }}
             style="flex justify-start"
           >
-            <div style={`${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white'} shadow-sm rounded-2xl px-4 py-3`}>
-              <div style="flex gap-1">
+            <View style={`${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white'} shadow-sm rounded-2xl px-4 py-3`}>
+              <View style="flex gap-1">
                 {[0, 1, 2].map((i) => (
                   <motion.div
                     key={i}
@@ -162,7 +162,7 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
         animate={{ opacity: 1, y: 0 }}
         style={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-t p-4`}
       >
-        <div style="max-w-md mx-auto flex items-center gap-2">
+        <View style="max-w-md mx-auto flex items-center gap-2">
           <motion.button
             whileTap={{ scale: 0.9 }}
             style={`p-2 rounded-full ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}
@@ -178,7 +178,7 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
           />
           <motion.div whileTap={{ scale: 0.9 }}>
             <Button
-              onClick={handleSend}
+              onPress={handleSend}
               style={`rounded-full h-10 w-10 p-0 ${
                 isDark 
                   ? 'bg-blue-600 hover:bg-blue-700' 

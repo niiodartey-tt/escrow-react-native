@@ -24,16 +24,16 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
   ];
 
   return (
-    <div style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
       >
-        <div style="flex items-center gap-4 max-w-md mx-auto">
+        <View style="flex items-center gap-4 max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-gray-100 rounded-full"
           >
             <ArrowLeft style="w-5 h-5" />
@@ -42,7 +42,7 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6">
+      <View style="max-w-md mx-auto p-6">
         {/* Balance Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -50,30 +50,30 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
           transition={{ type: "spring", stiffness: 200 }}
         >
           <Card style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6 shadow-xl mb-6">
-            <div style="flex items-center gap-3 mb-6">
+            <View style="flex items-center gap-3 mb-6">
               <Wallet style="w-6 h-6" />
               <Text>My Wallet</Text>
             </View>
-            <div style="mb-2 text-sm opacity-80">Available Balance</View>
-            <div style="text-4xl mb-4">$4,500</View>
-            <div style="flex justify-between items-center pt-4 border-t border-white/20">
+            <View style="mb-2 text-sm opacity-80">Available Balance</View>
+            <View style="text-4xl mb-4">$4,500</View>
+            <View style="flex justify-between items-center pt-4 border-t border-white/20">
               <View>
-                <div style="text-sm opacity-80">Escrow Balance</View>
-                <div style="text-xl">$200</View>
+                <View style="text-sm opacity-80">Escrow Balance</View>
+                <View style="text-xl">$200</View>
               </View>
-              <div style="text-right">
-                <div style="text-sm opacity-80">Total</View>
-                <div style="text-xl">$4,700</View>
+              <View style="text-right">
+                <View style="text-sm opacity-80">Total</View>
+                <View style="text-xl">$4,700</View>
               </View>
             </View>
           </Card>
         </motion.div>
 
         {/* Action Buttons */}
-        <div style="flex gap-3 mb-6">
+        <View style="flex gap-3 mb-6">
           <motion.div whileTap={{ scale: 0.95 }} style="flex-1">
             <Button
-              onClick={() => onNavigate("fund-wallet")}
+              onPress={() => onNavigate("fund-wallet")}
               style="w-full bg-[#043b69] hover:bg-[#032d51] shadow-lg"
             >
               Top Up Wallet
@@ -81,7 +81,7 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
           </motion.div>
           <motion.div whileTap={{ scale: 0.95 }} style="flex-1">
             <Button
-              onClick={() => onNavigate("withdraw")}
+              onPress={() => onNavigate("withdraw")}
               variant="outline"
               style="w-full border-2 shadow-md"
             >
@@ -91,11 +91,11 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
         </View>
 
         {/* Transaction History */}
-        <div style="mb-4">
+        <View style="mb-4">
           <Text style={{fontSize:18,fontWeight:"500"}}>Transaction History</Text>
         </View>
 
-        <div style="space-y-3">
+        <View style="space-y-3">
           {transactions.map((transaction, index) => (
             <motion.div
               key={transaction.id}
@@ -105,9 +105,9 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
               whileHover={{ scale: 1.02 }}
             >
               <Card style="p-4 shadow-sm hover:shadow-md transition-shadow">
-                <div style="flex items-center justify-between">
-                  <div style="flex items-center gap-3">
-                    <div style={`p-2 rounded-full ${
+                <View style="flex items-center justify-between">
+                  <View style="flex items-center gap-3">
+                    <View style={`p-2 rounded-full ${
                       transaction.type === "credit" ? "bg-green-100" : "bg-red-100"
                     }`}>
                       {transaction.type === "credit" ? (
@@ -118,10 +118,10 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
                     </View>
                     <View>
                       <View>{transaction.description}</View>
-                      <p style="text-sm text-gray-500">{transaction.date}</Text>
+                      <Text style="text-sm text-gray-500">{transaction.date}</Text>
                     </View>
                   </View>
-                  <div style={`${
+                  <View style={`${
                     transaction.type === "credit" ? "text-green-600" : "text-red-600"
                   }`}>
                     {transaction.type === "credit" ? "+" : "-"}${transaction.amount}

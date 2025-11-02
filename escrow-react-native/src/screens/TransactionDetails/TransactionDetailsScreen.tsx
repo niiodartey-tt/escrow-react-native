@@ -162,28 +162,28 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
   );
 
   return (
-    <div style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6"
       >
-        <div style="flex items-center gap-4 max-w-md mx-auto">
+        <View style="flex items-center gap-4 max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-white/10"
           >
             <ArrowLeft style="w-5 h-5" />
           </motion.button>
           <View>
             <Text style={{fontSize:20,fontWeight:"600"}}>Transaction Details</Text>
-            <p style="text-xs opacity-80">{transaction.id}</Text>
+            <Text style="text-xs opacity-80">{transaction.id}</Text>
           </View>
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6 space-y-4">
+      <View style="max-w-md mx-auto p-6 space-y-4">
         {/* Main Transaction Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -191,28 +191,28 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           transition={{ delay: 0.1 }}
         >
           <Card style="p-6 shadow-md">
-            <div style="flex justify-between items-start mb-4">
-              <div style="flex-1">
-                <div style="flex items-start justify-between mb-2">
-                  <h3 style="flex-1">{transaction.name || transaction.title}</Text>
+            <View style="flex justify-between items-start mb-4">
+              <View style="flex-1">
+                <View style="flex items-start justify-between mb-2">
+                  <Text style="flex-1">{transaction.name || transaction.title}</Text>
                   <Badge style={`${statusColor} hover:${statusColor} ml-2`}>
                     {transaction.status}
                   </Badge>
                 </View>
-                <p style="text-gray-500 text-sm mb-4">{transaction.description}</Text>
+                <Text style="text-gray-500 text-sm mb-4">{transaction.description}</Text>
               </View>
             </View>
             
             <Separator style="my-4" />
             
-            <div style="grid grid-cols-2 gap-4">
+            <View style="grid grid-cols-2 gap-4">
               <View>
-                <p style="text-gray-500 text-xs mb-1">Amount</Text>
-                <div style="text-2xl">${transaction.amount}</View>
+                <Text style="text-gray-500 text-xs mb-1">Amount</Text>
+                <View style="text-2xl">${transaction.amount}</View>
               </View>
               <View>
-                <p style="text-gray-500 text-xs mb-1">Created</Text>
-                <div style="text-sm">{transaction.date}</View>
+                <Text style="text-gray-500 text-xs mb-1">Created</Text>
+                <View style="text-sm">{transaction.date}</View>
               </View>
             </View>
           </Card>
@@ -225,12 +225,12 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           transition={{ delay: 0.2 }}
         >
           <Card style="p-6 shadow-md">
-            <div style="flex items-center justify-between mb-4">
-              <h4>Transaction Progress</h4>
-              <span style="text-xs text-gray-500">{Math.round(progressValue)}%</Text>
+            <View style="flex items-center justify-between mb-4">
+              <Text>Transaction Progress</Text>
+              <Text style="text-xs text-gray-500">{Math.round(progressValue)}%</Text>
             </View>
             <Progress value={progressValue} style="mb-6" />
-            <div style="space-y-4">
+            <View style="space-y-4">
               {steps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -239,23 +239,23 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
                   transition={{ delay: 0.3 + index * 0.1 }}
                   style="flex items-start gap-3"
                 >
-                  <div style="mt-0.5">
+                  <View style="mt-0.5">
                     {step.completed ? (
-                      <div style="w-6 h-6 bg-green-100 flex items-center justify-center">
+                      <View style="w-6 h-6 bg-green-100 flex items-center justify-center">
                         <CheckCircle style="w-4 h-4 text-green-600" />
                       </View>
                     ) : (
-                      <div style="w-6 h-6 border-2 border-gray-300 bg-white flex items-center justify-center">
-                        <div style="w-2 h-2 bg-gray-300" />
+                      <View style="w-6 h-6 border-2 border-gray-300 bg-white flex items-center justify-center">
+                        <View style="w-2 h-2 bg-gray-300" />
                       </View>
                     )}
                   </View>
-                  <div style="flex-1">
-                    <div style={`${step.completed ? "text-gray-900" : "text-gray-400"}`}>
+                  <View style="flex-1">
+                    <View style={`${step.completed ? "text-gray-900" : "text-gray-400"}`}>
                       {step.label}
                     </View>
                     {step.date && (
-                      <p style="text-xs text-gray-500 mt-1">{step.date}</Text>
+                      <Text style="text-xs text-gray-500 mt-1">{step.date}</Text>
                     )}
                   </View>
                 </motion.div>
@@ -271,19 +271,19 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           transition={{ delay: 0.3 }}
         >
           <Card style="p-6 shadow-md">
-            <h4 style="mb-4">Participants</h4>
-            <div style="space-y-4">
+            <Text style="mb-4">Participants</Text>
+            <View style="space-y-4">
               <motion.div 
                 whileHover={{ x: 4 }}
                 style="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
               >
-                <div style="flex items-center gap-3">
+                <View style="flex items-center gap-3">
                   <Avatar style="w-12 h-12">
                     <AvatarFallback style="bg-[#043b69] text-white">JD</AvatarFallback>
                   </Avatar>
                   <View>
                     <View>John Doe</View>
-                    <p style="text-xs text-gray-500">{transaction.role === "buyer" ? "Buyer" : "Seller"}</Text>
+                    <Text style="text-xs text-gray-500">{transaction.role === "buyer" ? "Buyer" : "Seller"}</Text>
                   </View>
                 </View>
                 <Badge variant="outline" style="text-xs">You</Badge>
@@ -293,18 +293,18 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
                 whileHover={{ x: 4 }}
                 style="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
               >
-                <div style="flex items-center gap-3">
+                <View style="flex items-center gap-3">
                   <Avatar style="w-12 h-12">
                     <AvatarFallback style="bg-green-100 text-green-700">AS</AvatarFallback>
                   </Avatar>
                   <View>
                     <View>{transaction.counterparty || "Alice Smith"}</View>
-                    <p style="text-xs text-gray-500">{transaction.role === "buyer" ? "Seller" : "Buyer"}</Text>
+                    <Text style="text-xs text-gray-500">{transaction.role === "buyer" ? "Seller" : "Buyer"}</Text>
                   </View>
                 </View>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => onNavigate("chat", transaction)}
+                  onPress={() => onNavigate("chat", transaction)}
                   style="text-xs text-[#043b69] hover:underline"
                 >
                   Message
@@ -321,33 +321,33 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           transition={{ delay: 0.4 }}
         >
           <Card style="p-6 shadow-md">
-            <h4 style="mb-4">Payment Details</h4>
-            <div style="space-y-3">
-              <div style="flex items-center justify-between">
-                <div style="flex items-center gap-3 text-sm">
+            <Text style="mb-4">Payment Details</Text>
+            <View style="space-y-3">
+              <View style="flex items-center justify-between">
+                <View style="flex items-center gap-3 text-sm">
                   <DollarSign style="w-4 h-4 text-gray-400" />
-                  <span style="text-gray-500">Transaction Amount</Text>
+                  <Text style="text-gray-500">Transaction Amount</Text>
                 </View>
                 <Text>${transaction.amount}</Text>
               </View>
-              <div style="flex items-center justify-between">
-                <div style="flex items-center gap-3 text-sm">
+              <View style="flex items-center justify-between">
+                <View style="flex items-center gap-3 text-sm">
                   <Shield style="w-4 h-4 text-gray-400" />
-                  <span style="text-gray-500">Escrow Fee (1%)</Text>
+                  <Text style="text-gray-500">Escrow Fee (1%)</Text>
                 </View>
                 <Text>${transaction.escrowFee || "4.50"}</Text>
               </View>
               <Separator />
-              <div style="flex items-center justify-between">
-                <div style="flex items-center gap-3">
+              <View style="flex items-center justify-between">
+                <View style="flex items-center gap-3">
                   <Text>Total Amount</Text>
                 </View>
-                <span style="text-lg">${(parseFloat(transaction.amount) + parseFloat(transaction.escrowFee || "4.50")).toFixed(2)}</Text>
+                <Text style="text-lg">${(parseFloat(transaction.amount) + parseFloat(transaction.escrowFee || "4.50")).toFixed(2)}</Text>
               </View>
               <Separator />
-              <div style="flex items-center gap-3 text-sm">
+              <View style="flex items-center gap-3 text-sm">
                 <CreditCard style="w-4 h-4 text-gray-400" />
-                <span style="text-gray-500">Payment Method:</Text>
+                <Text style="text-gray-500">Payment Method:</Text>
                 <Text>{transaction.paymentMethod || "Card ending in 4242"}</Text>
               </View>
             </View>
@@ -361,28 +361,28 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           transition={{ delay: 0.5 }}
         >
           <Card style="p-6 shadow-md">
-            <h4 style="mb-4">Additional Details</h4>
-            <div style="space-y-3">
-              <div style="flex items-start gap-3 text-sm">
+            <Text style="mb-4">Additional Details</Text>
+            <View style="space-y-3">
+              <View style="flex items-start gap-3 text-sm">
                 <Package style="w-4 h-4 text-gray-400 mt-0.5" />
-                <div style="flex-1">
-                  <span style="text-gray-500">Category:</Text>
-                  <span style="ml-2">{transaction.category || "Physical Product"}</Text>
+                <View style="flex-1">
+                  <Text style="text-gray-500">Category:</Text>
+                  <Text style="ml-2">{transaction.category || "Physical Product"}</Text>
                 </View>
               </View>
-              <div style="flex items-start gap-3 text-sm">
+              <View style="flex items-start gap-3 text-sm">
                 <Calendar style="w-4 h-4 text-gray-400 mt-0.5" />
-                <div style="flex-1">
-                  <span style="text-gray-500">Expected Delivery:</Text>
-                  <span style="ml-2">{transaction.expectedDelivery || "Oct 28, 2025"}</Text>
+                <View style="flex-1">
+                  <Text style="text-gray-500">Expected Delivery:</Text>
+                  <Text style="ml-2">{transaction.expectedDelivery || "Oct 28, 2025"}</Text>
                 </View>
               </View>
               {transaction.shippingAddress && (
-                <div style="flex items-start gap-3 text-sm">
+                <View style="flex items-start gap-3 text-sm">
                   <MapPin style="w-4 h-4 text-gray-400 mt-0.5" />
-                  <div style="flex-1">
-                    <span style="text-gray-500">Shipping Address:</Text>
-                    <p style="mt-1">{transaction.shippingAddress}</Text>
+                  <View style="flex-1">
+                    <Text style="text-gray-500">Shipping Address:</Text>
+                    <Text style="mt-1">{transaction.shippingAddress}</Text>
                   </View>
                 </View>
               )}
@@ -397,11 +397,11 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           transition={{ delay: 0.6 }}
         >
           <Card style="p-6 shadow-md">
-            <div style="flex items-center gap-2 mb-3">
+            <View style="flex items-center gap-2 mb-3">
               <FileText style="w-4 h-4 text-gray-400" />
-              <h4>Terms & Conditions</h4>
+              <Text>Terms & Conditions</Text>
             </View>
-            <p style="text-sm text-gray-600">
+            <Text style="text-sm text-gray-600">
               {transaction.terms || "Item must be as described. Buyer has 3 days to inspect and confirm receipt. Seller must ship within 2 business days of escrow confirmation."}
             </Text>
           </Card>
@@ -414,8 +414,8 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           transition={{ delay: 0.7 }}
         >
           <Card style="p-6 shadow-md">
-            <h4 style="mb-4">Activity Log</h4>
-            <div style="space-y-3">
+            <Text style="mb-4">Activity Log</Text>
+            <View style="space-y-3">
               {activityLog.map((activity, index) => (
                 <motion.div
                   key={index}
@@ -424,9 +424,9 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
                   transition={{ delay: 0.8 + index * 0.05 }}
                   style="flex gap-3 border-l-2 border-gray-200 pl-4 py-2"
                 >
-                  <div style="flex-1">
-                    <div style="text-sm">{activity.action}</View>
-                    <div style="text-xs text-gray-500 mt-1">
+                  <View style="flex-1">
+                    <View style="text-sm">{activity.action}</View>
+                    <View style="text-xs text-gray-500 mt-1">
                       {activity.date} • {activity.user}
                     </View>
                   </View>
@@ -445,7 +445,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           <Button
             variant="outline"
             style="w-full h-12 gap-2"
-            onClick={handleDownloadReceipt}
+            onPress={handleDownloadReceipt}
           >
             <Download style="w-4 h-4" />
             Download Receipt
@@ -462,7 +462,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           {transaction.status === "In Escrow" && transaction.role === "buyer" && (
             <Button
               style="w-full bg-[#043b69] hover:bg-[#032d51] shadow-lg h-12"
-              onClick={handleReleaseFunds}
+              onPress={handleReleaseFunds}
             >
               <CheckCircle style="w-4 h-4 mr-2" />
               Confirm & Release Funds
@@ -473,7 +473,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
             <Button
               variant="outline"
               style="w-full border-2 border-red-600 text-red-600 hover:bg-red-50 h-12"
-              onClick={handleRaiseDispute}
+              onPress={handleRaiseDispute}
             >
               <AlertTriangle style="w-4 h-4 mr-2" />
               Raise Dispute
@@ -481,11 +481,11 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           )}
           
           {transaction.status === "Completed" && (
-            <div style="bg-green-50 border border-green-200 p-4 flex items-center gap-3">
+            <View style="bg-green-50 border border-green-200 p-4 flex items-center gap-3">
               <CheckCircle style="w-5 h-5 text-green-600" />
               <View>
-                <div style="text-sm text-green-800">Transaction Completed</View>
-                <p style="text-xs text-green-600 mt-1">Funds have been released successfully</Text>
+                <View style="text-sm text-green-800">Transaction Completed</View>
+                <Text style="text-xs text-green-600 mt-1">Funds have been released successfully</Text>
               </View>
             </View>
           )}
@@ -497,11 +497,11 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0 }}
         >
-          <div style="bg-blue-50 border border-blue-200 p-4 flex items-start gap-3">
+          <View style="bg-blue-50 border border-blue-200 p-4 flex items-start gap-3">
             <Info style="w-5 h-5 text-blue-600 mt-0.5" />
-            <div style="flex-1">
-              <div style="text-sm text-blue-800">Secure Escrow Protection</View>
-              <p style="text-xs text-blue-600 mt-1">
+            <View style="flex-1">
+              <View style="text-sm text-blue-800">Secure Escrow Protection</View>
+              <Text style="text-xs text-blue-600 mt-1">
                 Your funds are held securely in escrow until both parties confirm the transaction is complete.
               </Text>
             </View>
@@ -512,7 +512,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => onNavigate("chat", transaction)}
+          onPress={() => onNavigate("chat", transaction)}
           style="fixed bottom-24 right-6 bg-[#043b69] text-white p-4 rounded-full shadow-lg z-20"
         >
           <MessageCircle style="w-6 h-6" />

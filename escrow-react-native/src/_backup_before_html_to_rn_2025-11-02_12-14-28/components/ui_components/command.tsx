@@ -59,7 +59,7 @@ function CommandInput({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
   return (
-    <div
+    <View
       data-slot="command-input-wrapper"
       style="flex h-9 items-center gap-2 border-b px-3"
     >
@@ -154,7 +154,7 @@ function CommandShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Text
       data-slot="command-shortcut"
       style={cn(
         "text-muted-foreground ml-auto text-xs tracking-widest",

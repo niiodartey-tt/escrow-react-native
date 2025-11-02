@@ -190,30 +190,30 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
   };
 
   return (
-    <div style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6"
       >
-        <div style="max-w-md mx-auto">
-          <div style="flex items-center justify-between gap-4 mb-4">
-            <div style="flex items-center gap-4">
+        <View style="max-w-md mx-auto">
+          <View style="flex items-center justify-between gap-4 mb-4">
+            <View style="flex items-center gap-4">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={onBack}
+                onPress={onBack}
                 style="p-2 hover:bg-white/10"
               >
                 <ArrowLeft style="w-5 h-5" />
               </motion.button>
               <View>
                 <Text style={{fontSize:20,fontWeight:"600"}}>Transaction History</Text>
-                <p style="text-xs opacity-80">{allTransactions.length} total transactions</Text>
+                <Text style="text-xs opacity-80">{allTransactions.length} total transactions</Text>
               </View>
             </View>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={() => setShowFilters(!showFilters)}
+              onPress={() => setShowFilters(!showFilters)}
               style={`p-2 hover:bg-white/10 ${showFilters ? "bg-white/10" : ""}`}
             >
               <Filter style="w-5 h-5" />
@@ -221,7 +221,7 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
           </View>
 
           {/* Search Bar */}
-          <div style="relative">
+          <View style="relative">
             <Search style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <Input
               placeholder="Search transactions..."
@@ -231,7 +231,7 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
             />
             {searchQuery && (
               <TouchableOpacity
-                onClick={() => setSearchQuery("")}
+                onPress={() => setSearchQuery("")}
                 style="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white"
               >
                 <X style="w-5 h-5" />
@@ -251,7 +251,7 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
                 <motion.button
                   key={option.value}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => {
+                  onPress={() => {
                     setFilterStatus(option.value);
                     setShowFilters(false);
                   }}
@@ -269,15 +269,15 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6 space-y-4">
+      <View style="max-w-md mx-auto p-6 space-y-4">
         {filteredTransactions.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
           >
-            <h3 style="mb-2">No transactions found</Text>
-            <p style="text-gray-500">
+            <Text style="mb-2">No transactions found</Text>
+            <Text style="text-gray-500">
               {searchQuery ? "Try adjusting your search or filters" : "No transactions available"}
             </Text>
           </motion.div>
@@ -292,22 +292,22 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
             >
               <Card 
                 style="p-4 shadow-sm hover:shadow-md transition-all cursor-pointer"
-                onClick={() => onNavigate("transaction-details", transaction)}
+                onPress={() => onNavigate("transaction-details", transaction)}
               >
-                <div style="flex justify-between items-start mb-3">
+                <View style="flex justify-between items-start mb-3">
                   <View>
-                    <p style="text-xs text-gray-500 mb-1">{transaction.id}</Text>
-                    <p style="text-xs text-gray-400">{transaction.date}</Text>
+                    <Text style="text-xs text-gray-500 mb-1">{transaction.id}</Text>
+                    <Text style="text-xs text-gray-400">{transaction.date}</Text>
                   </View>
                   <Badge style={`${getStatusColor(transaction.status)} border`}>
                     {transaction.status}
                   </Badge>
                 </View>
-                <div style="flex justify-between items-end">
+                <View style="flex justify-between items-end">
                   <View>
-                    <div style="mb-2">${transaction.amount}</View>
-                    <p style="text-sm text-gray-600 mb-1">{transaction.name}</Text>
-                    <p style="text-xs text-gray-400">
+                    <View style="mb-2">${transaction.amount}</View>
+                    <Text style="text-sm text-gray-600 mb-1">{transaction.name}</Text>
+                    <Text style="text-xs text-gray-400">
                       {transaction.role === "buyer" ? "Seller: " : "Buyer: "}
                       {transaction.counterparty}
                     </Text>
@@ -316,7 +316,7 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
                     size="sm"
                     variant="outline"
                     style="text-[#043b69] border-[#043b69] hover:bg-blue-50"
-                    onClick={(e) => {
+                    onPress={(e) => {
                       e.stopPropagation();
                       onNavigate("transaction-details", transaction);
                     }}

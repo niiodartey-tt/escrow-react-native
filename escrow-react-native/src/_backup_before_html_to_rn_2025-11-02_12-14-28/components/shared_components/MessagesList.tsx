@@ -72,17 +72,17 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
   );
 
   return (
-    <div style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
       >
-        <div style="max-w-md mx-auto">
-          <div style="flex items-center gap-4 mb-4">
+        <View style="max-w-md mx-auto">
+          <View style="flex items-center gap-4 mb-4">
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={onBack}
+              onPress={onBack}
               style="p-2 hover:bg-gray-100 rounded-full"
             >
               <ArrowLeft style="w-5 h-5" />
@@ -105,7 +105,7 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
             />
             {searchQuery && (
               <TouchableOpacity
-                onClick={() => setSearchQuery("")}
+                onPress={() => setSearchQuery("")}
                 style="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
                 <X style="w-5 h-5" />
@@ -115,18 +115,18 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6 space-y-3">
+      <View style="max-w-md mx-auto p-6 space-y-3">
         {filteredChats.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
           >
-            <div style="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <View style="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <MessageCircle style="w-8 h-8 text-gray-400" />
             </View>
-            <h3 style="mb-2">No messages found</Text>
-            <p style="text-gray-500">
+            <Text style="mb-2">No messages found</Text>
+            <Text style="text-gray-500">
               {searchQuery 
                 ? "Try a different search term" 
                 : "Start a conversation from a transaction"}
@@ -141,21 +141,21 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
             transition={{ delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => onSelectChat(chat)}
+            onPress={() => onSelectChat(chat)}
           >
             <Card style="p-4 cursor-pointer shadow-sm hover:shadow-md transition-shadow">
-              <div style="flex items-start gap-3">
+              <View style="flex items-start gap-3">
                 <Avatar>
                   <AvatarFallback style="bg-blue-100 text-[#043b69]">
                     {chat.avatar}
                   </AvatarFallback>
                 </Avatar>
-                <div style="flex-1 min-w-0">
-                  <div style="flex justify-between items-start mb-1">
+                <View style="flex-1 min-w-0">
+                  <View style="flex justify-between items-start mb-1">
                     <View>{chat.name}</View>
-                    <span style="text-xs text-gray-500">{chat.time}</Text>
+                    <Text style="text-xs text-gray-500">{chat.time}</Text>
                   </View>
-                  <p style="text-gray-500 text-sm truncate mb-2">
+                  <Text style="text-gray-500 text-sm truncate mb-2">
                     {chat.lastMessage}
                   </Text>
                   <Badge

@@ -127,22 +127,22 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
   };
 
   return (
-    <div style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
+    <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header with Wallet Balance */}
-      <div style="relative">
+      <View style="relative">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           style={`p-4 sm:p-6 pb-20 sm:pb-24 text-white ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'}`}
         >
-          <div style="flex justify-between items-start mb-6 sm:mb-8">
+          <View style="flex justify-between items-start mb-6 sm:mb-8">
             <View>
-              <p style="text-white/80 text-xs sm:text-sm mb-1">Welcome back,</Text>
-              <h2 style="text-xl sm:text-2xl">John Doe</Text>
+              <Text style="text-white/80 text-xs sm:text-sm mb-1">Welcome back,</Text>
+              <Text style="text-xl sm:text-2xl">John Doe</Text>
             </View>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={() => onNavigate("notifications")}
+              onPress={() => onNavigate("notifications")}
               style="relative p-2 hover:bg-white/10"
             >
               <Bell style="w-5 h-5 sm:w-6 sm:h-6" />
@@ -159,9 +159,9 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
             </motion.button>
           </View>
 
-          <div style="grid grid-cols-2 gap-3 sm:gap-4">
+          <View style="grid grid-cols-2 gap-3 sm:gap-4">
             <View>
-              <p style="text-white/80 text-xs sm:text-sm mb-1">Wallet Balance</Text>
+              <Text style="text-white/80 text-xs sm:text-sm mb-1">Wallet Balance</Text>
               <motion.div 
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
@@ -171,20 +171,20 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
               </motion.div>
             </View>
             <View>
-              <p style="text-white/80 text-xs sm:text-sm mb-1">Escrow Balance</Text>
-              <div style="text-xl sm:text-2xl">$200.00</View>
+              <Text style="text-white/80 text-xs sm:text-sm mb-1">Escrow Balance</Text>
+              <View style="text-xl sm:text-2xl">$200.00</View>
             </View>
           </View>
         </motion.div>
 
         {/* Stats Grid - Overlay */}
-        <div style="px-4 sm:px-6 -mt-14 sm:-mt-16 relative z-10 rounded-[0px]">
+        <View style="px-4 sm:px-6 -mt-14 sm:-mt-16 relative z-10 rounded-[0px]">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="bg-white shadow-lg p-5"
           >
-            <div style="grid grid-cols-2 gap-4">
+            <View style="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 const isBottomRow = index >= 2;
@@ -199,12 +199,12 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                       isBottomRow ? 'border-t border-gray-200 pt-5' : ''
                     }`}
                   >
-                    <div style={`p-2 ${stat.bgColor}`}>
+                    <View style={`p-2 ${stat.bgColor}`}>
                       <Icon style={`w-5 h-5 ${stat.color}`} />
                     </View>
                     <View>
-                      <div style="text-sm text-gray-500">{stat.label}</View>
-                      <div style="text-xl">{stat.value}</View>
+                      <View style="text-sm text-gray-500">{stat.label}</View>
+                      <View style="text-xl">{stat.value}</View>
                     </View>
                   </motion.div>
                 );
@@ -228,9 +228,9 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
               ? (isDark ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-50 border-blue-200')
               : (isDark ? 'bg-red-900/20 border-red-700' : 'bg-red-50 border-red-200')
           }`}
-          onClick={() => kycStatus === "pending" && onNavigate("kyc-verification")}
+          onPress={() => kycStatus === "pending" && onNavigate("kyc-verification")}
           >
-            <div style="flex gap-3">
+            <View style="flex gap-3">
               {kycStatus === "pending" ? (
                 <AlertCircle style="w-5 h-5 text-yellow-600 dark:text-yellow-500 mt-0.5 flex-shrink-0" />
               ) : kycStatus === "under-review" ? (
@@ -238,8 +238,8 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
               ) : (
                 <AlertTriangle style="w-5 h-5 text-red-600 dark:text-red-500 mt-0.5 flex-shrink-0" />
               )}
-              <div style="flex-1">
-                <h4 style={`mb-1 ${
+              <View style="flex-1">
+                <Text style={`mb-1 ${
                   kycStatus === "pending" 
                     ? (isDark ? 'text-yellow-200' : 'text-yellow-800')
                     : kycStatus === "under-review"
@@ -249,8 +249,8 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                   {kycStatus === "pending" && "Complete KYC Verification"}
                   {kycStatus === "under-review" && "KYC Under Review"}
                   {kycStatus === "rejected" && "KYC Verification Failed"}
-                </h4>
-                <p style={`text-sm ${
+                </Text>
+                <Text style={`text-sm ${
                   kycStatus === "pending" 
                     ? (isDark ? 'text-yellow-300' : 'text-yellow-700')
                     : kycStatus === "under-review"
@@ -273,10 +273,10 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
       )}
 
       {/* Action Buttons */}
-      <div style="px-6 mb-8 mt-6 flex gap-3">
+      <View style="px-6 mb-8 mt-6 flex gap-3">
         <motion.div whileTap={{ scale: 0.98 }} style="flex-1">
           <Button
-            onClick={() => onNavigate("wallet")}
+            onPress={() => onNavigate("wallet")}
             style="w-full bg-[#043b69] hover:bg-[#032d51] shadow-lg h-12"
           >
             + Top up wallet
@@ -284,7 +284,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
         </motion.div>
         <motion.div whileTap={{ scale: 0.98 }} style="flex-1">
           <Button
-            onClick={() => onNavigate("withdraw")}
+            onPress={() => onNavigate("withdraw")}
             style="w-full bg-black hover:bg-gray-900 text-white shadow-lg h-12"
           >
             Withdraw
@@ -293,22 +293,22 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
       </View>
 
       {/* Recent Transactions */}
-      <div style="px-6 pb-6">
-        <div style="flex justify-between items-center mb-4">
+      <View style="px-6 pb-6">
+        <View style="flex justify-between items-center mb-4">
           <View>
-            <h3 style="uppercase tracking-wide text-sm">Recent Transactions</Text>
-            <p style="text-xs text-gray-500">October</Text>
+            <Text style="uppercase tracking-wide text-sm">Recent Transactions</Text>
+            <Text style="text-xs text-gray-500">October</Text>
           </View>
-          <div style="flex items-center gap-3">
+          <View style="flex items-center gap-3">
             <motion.button 
               whileTap={{ scale: 0.9 }}
-              onClick={() => setShowFilters(!showFilters)}
+              onPress={() => setShowFilters(!showFilters)}
               style={`p-2 hover:bg-gray-100 ${showFilters ? "bg-gray-100" : ""}`}
             >
               <Filter style="w-5 h-5 text-gray-600" />
             </motion.button>
             <TouchableOpacity 
-              onClick={() => onNavigate("transaction-history")}
+              onPress={() => onNavigate("transaction-history")}
               style="text-[#043b69] text-sm hover:underline"
             >
               See all
@@ -324,7 +324,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
             exit={{ opacity: 0, height: 0 }}
             style="mb-4 space-y-3"
           >
-            <div style="relative">
+            <View style="relative">
               <Search style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <Input
                 placeholder="Search transactions..."
@@ -334,7 +334,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
               />
               {searchQuery && (
                 <TouchableOpacity
-                  onClick={() => setSearchQuery("")}
+                  onPress={() => setSearchQuery("")}
                   style="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   <X style="w-5 h-5" />
@@ -342,12 +342,12 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
               )}
             </View>
             
-            <div style="flex gap-2 flex-wrap">
+            <View style="flex gap-2 flex-wrap">
               {filterOptions.map((option) => (
                 <motion.button
                   key={option.value}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setFilterStatus(option.value)}
+                  onPress={() => setFilterStatus(option.value)}
                   style={`px-3 py-1.5 text-sm transition-colors ${
                     filterStatus === option.value
                       ? "bg-[#043b69] text-white"
@@ -361,15 +361,15 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
           </motion.div>
         )}
 
-        <div style="space-y-4">
+        <View style="space-y-4">
           {recentTransactions.length === 0 ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               style="text-center py-8"
             >
-              <p style="text-gray-500">No transactions found</Text>
-              <p style="text-sm text-gray-400">Try adjusting your filters</Text>
+              <Text style="text-gray-500">No transactions found</Text>
+              <Text style="text-sm text-gray-400">Try adjusting your filters</Text>
             </motion.div>
           ) : (
             recentTransactions.map((transaction, index) => (
@@ -380,21 +380,21 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                 transition={{ delay: 0.2 + index * 0.1 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Card style="p-4 shadow-sm hover:shadow-md transition-all cursor-pointer" onClick={() => onNavigate("transaction-details", transaction)}>
-                  <div style="flex justify-between items-start mb-3">
+                <Card style="p-4 shadow-sm hover:shadow-md transition-all cursor-pointer" onPress={() => onNavigate("transaction-details", transaction)}>
+                  <View style="flex justify-between items-start mb-3">
                     <View>
-                      <p style="text-xs text-gray-500 mb-1">{transaction.id}</Text>
-                      <p style="text-xs text-gray-400">{transaction.date}</Text>
+                      <Text style="text-xs text-gray-500 mb-1">{transaction.id}</Text>
+                      <Text style="text-xs text-gray-400">{transaction.date}</Text>
                     </View>
                     <Badge style={`${getStatusColor(transaction.status)} border text-xs`}>
                       {transaction.status}
                     </Badge>
                   </View>
-                  <div style="flex justify-between items-end">
+                  <View style="flex justify-between items-end">
                     <View>
-                      <div style="mb-2">${transaction.amount}</View>
-                      <p style="text-sm text-gray-600 mb-1">{transaction.name}</Text>
-                      <p style="text-xs text-gray-400">
+                      <View style="mb-2">${transaction.amount}</View>
+                      <Text style="text-sm text-gray-600 mb-1">{transaction.name}</Text>
+                      <Text style="text-xs text-gray-400">
                         {transaction.role === "buyer" ? "Seller: " : "Buyer: "}
                         {transaction.counterparty}
                       </Text>
@@ -402,7 +402,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={(e) => {
+                      onPress={(e) => {
                         e.stopPropagation();
                         onNavigate("transaction-details", transaction);
                       }}

@@ -5,7 +5,7 @@ import { cn } from "./utils";
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
-    <input
+    <TextInput
       type={type}
       data-slot="input"
       style={cn(

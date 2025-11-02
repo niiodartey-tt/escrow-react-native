@@ -50,16 +50,16 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
   };
 
   return (
-    <div style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
+    <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
       >
-        <div style="flex items-center gap-4 max-w-md mx-auto">
+        <View style="flex items-center gap-4 max-w-md mx-auto">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={onBack}
+            onPress={onBack}
             style="p-2 hover:bg-gray-100 rounded-full"
           >
             <ArrowLeft style="w-5 h-5" />
@@ -68,25 +68,25 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
         </View>
       </motion.div>
 
-      <div style="max-w-md mx-auto p-6">
+      <View style="max-w-md mx-auto p-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           style="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6"
         >
-          <p style="text-blue-800 text-sm">
+          <Text style="text-blue-800 text-sm">
             Available Balance: <Text>$4,500</Text>
           </Text>
         </motion.div>
 
-        <form onSubmit={handleSubmit} style="space-y-6">
+        <View onSubmit={handleSubmit} style="space-y-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
           >
             <Label>Withdrawal Amount</Label>
-            <div style="relative mt-2">
+            <View style="relative mt-2">
               <DollarSign style="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <Input
                 type="number"
@@ -154,7 +154,7 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
               Confirm Withdrawal
             </Button>
           </motion.div>
-        </form>
+        </View>
       </View>
 
       {/* Success Modal */}
@@ -180,8 +180,8 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
               >
                 <CheckCircle2 style="w-8 h-8 text-green-600" />
               </motion.div>
-              <h3 style="mb-2">Withdrawal Successful!</Text>
-              <p style="text-gray-500">
+              <Text style="mb-2">Withdrawal Successful!</Text>
+              <Text style="text-gray-500">
                 Your withdrawal request has been submitted and will be processed within 24 hours.
               </Text>
             </motion.div>
