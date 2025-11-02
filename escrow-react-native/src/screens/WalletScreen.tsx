@@ -25,7 +25,7 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
@@ -40,11 +40,11 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
           </motion.button>
           <Text style={{fontSize:20,fontWeight:"600"}}>Wallet</Text>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
         {/* Balance Card */}
-        <motion.div
+        <View
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: "spring", stiffness: 200 }}
@@ -67,19 +67,19 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Action Buttons */}
         <View style="flex gap-3 mb-6">
-          <motion.div whileTap={{ scale: 0.95 }} style="flex-1">
+          <View whileTap={{ scale: 0.95 }} style="flex-1">
             <Button
               onPress={() => onNavigate("fund-wallet")}
               style="w-full bg-[#043b69] hover:bg-[#032d51] shadow-lg"
             >
               Top Up Wallet
             </Button>
-          </motion.div>
-          <motion.div whileTap={{ scale: 0.95 }} style="flex-1">
+          </View>
+          <View whileTap={{ scale: 0.95 }} style="flex-1">
             <Button
               onPress={() => onNavigate("withdraw")}
               variant="outline"
@@ -87,7 +87,7 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
             >
               Withdraw Funds
             </Button>
-          </motion.div>
+          </View>
         </View>
 
         {/* Transaction History */}
@@ -97,7 +97,7 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
 
         <View style="space-y-3">
           {transactions.map((transaction, index) => (
-            <motion.div
+            <View
               key={transaction.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export function WalletScreen({ onBack, onNavigate }: WalletScreenProps) {
                   </View>
                 </View>
               </Card>
-            </motion.div>
+            </View>
           ))}
         </View>
       </View>

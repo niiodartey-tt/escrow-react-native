@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import { motion, AnimatePresence } from "motion/react";
+
 import { X, Mail, Smartphone } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
@@ -83,11 +83,11 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
   };
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <View
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -97,7 +97,7 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
 
           {/* Modal */}
           <View style="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div
+            <View
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -129,7 +129,7 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
               {/* Content */}
               <View style="p-6 -mt-6">
                 {/* Info Card */}
-                <motion.div
+                <View
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
@@ -140,10 +140,10 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                   <Text style="text-xs text-gray-400 dark:text-gray-500 mt-2">
                     Please check your {email ? "email inbox" : "messages"} for the verification code
                   </Text>
-                </motion.div>
+                </View>
 
                 {/* OTP Input */}
-                <motion.div
+                <View
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -183,10 +183,10 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                   <Text style="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
                     For demo purposes, use OTP: 123456
                   </Text>
-                </motion.div>
+                </View>
 
                 {/* Resend */}
-                <motion.div
+                <View
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
@@ -204,10 +204,10 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                       Resend OTP in {resendCountdown}s
                     </Text>
                   )}
-                </motion.div>
+                </View>
 
                 {/* Actions */}
-                <motion.div
+                <View
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
@@ -228,12 +228,12 @@ export function OTPVerification({ isOpen, onClose, onVerify, email, phone }: OTP
                   >
                     Cancel
                   </Button>
-                </motion.div>
+                </View>
               </View>
-            </motion.div>
+            </View>
           </View>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 }

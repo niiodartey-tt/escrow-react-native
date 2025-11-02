@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import { motion, AnimatePresence } from "motion/react";
+
 import { ArrowLeft, Filter, Plus, Package, Handshake, Search, X } from "lucide-react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -165,7 +165,7 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-20"
@@ -211,9 +211,9 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
           </View>
 
           {/* Filter Menu */}
-          <AnimatePresence>
+          <>
             {showFilterMenu && (
-              <motion.div
+              <View
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
@@ -238,15 +238,15 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
                     </motion.button>
                   ))}
                 </View>
-              </motion.div>
+              </View>
             )}
-          </AnimatePresence>
+          </>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
         {filteredDeals.length === 0 ? (
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
@@ -269,11 +269,11 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
                 Create Deal
               </Button>
             )}
-          </motion.div>
+          </View>
         ) : (
           <View style="space-y-4">
             {filteredDeals.map((deal, index) => (
-            <motion.div
+            <View
               key={deal.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -334,7 +334,7 @@ export function DealsScreen({ onBack, onCreateDeal, onNavigate }: DealsScreenPro
                   </Text>
                 </View>
               </Card>
-            </motion.div>
+            </View>
             ))}
           </View>
         )}

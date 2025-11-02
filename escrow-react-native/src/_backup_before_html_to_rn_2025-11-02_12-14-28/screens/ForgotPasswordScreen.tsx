@@ -23,20 +23,20 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
   if (isSubmitted) {
     return (
       <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 flex items-center justify-center p-4 sm:p-6">
-        <motion.div
+        <View
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           style="max-w-md w-full"
         >
           <View style="bg-white dark:bg-gray-800 shadow-lg p-6 sm:p-8 text-center">
-            <motion.div
+            <View
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
               style="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4"
             >
               <CheckCircle style="w-8 h-8 text-green-600" />
-            </motion.div>
+            </View>
             <Text style="mb-2 dark:text-white">Check Your Email</Text>
             <Text style="text-gray-600 dark:text-gray-400 mb-6 text-sm sm:text-base">
               We've sent a password reset link to <strong>{email}</strong>
@@ -51,7 +51,7 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
               Back to Login
             </Button>
           </View>
-        </motion.div>
+        </View>
       </View>
     );
   }
@@ -68,7 +68,7 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
           >
             <ArrowLeft style="w-5 h-5" />
           </motion.button>
-          <motion.div
+          <View
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -76,20 +76,20 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
             <Text style="text-sm opacity-80">
               No worries, we'll send you reset instructions
             </Text>
-          </motion.div>
+          </View>
         </View>
       </View>
 
       {/* Form Card */}
       <View style="max-w-md mx-auto px-4 sm:px-6 -mt-8">
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style="bg-white dark:bg-gray-800 shadow-lg p-5 sm:p-6"
         >
           <View onSubmit={handleSubmit} style="space-y-5">
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
@@ -110,9 +110,9 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
               <Text style="text-xs text-gray-500 mt-2">
                 Enter the email associated with your account
               </Text>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -123,12 +123,12 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
               >
                 Send Reset Link
               </Button>
-            </motion.div>
+            </View>
           </View>
-        </motion.div>
+        </View>
 
         {/* Back to Login */}
-        <motion.div
+        <View
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -140,7 +140,7 @@ export function ForgotPasswordScreen({ onBack, onNavigate }: ForgotPasswordScree
           >
             ← Back to Login
           </TouchableOpacity>
-        </motion.div>
+        </View>
       </View>
     </View>
   );

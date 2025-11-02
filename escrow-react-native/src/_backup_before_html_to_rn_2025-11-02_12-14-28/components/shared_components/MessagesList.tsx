@@ -73,7 +73,7 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
@@ -90,7 +90,7 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
             <Text style={{fontSize:20,fontWeight:"600"}}>Messages</Text>
           </View>
           
-          <motion.div
+          <View
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
@@ -111,13 +111,13 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
                 <X style="w-5 h-5" />
               </TouchableOpacity>
             )}
-          </motion.div>
+          </View>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6 space-y-3">
         {filteredChats.length === 0 ? (
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
@@ -131,10 +131,10 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
                 ? "Try a different search term" 
                 : "Start a conversation from a transaction"}
             </Text>
-          </motion.div>
+          </View>
         ) : (
           filteredChats.map((chat, index) => (
-          <motion.div
+          <View
             key={chat.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -166,17 +166,17 @@ export function MessagesList({ onBack, onSelectChat }: MessagesListProps) {
                   </Badge>
                 </View>
                 {chat.unread > 0 && (
-                  <motion.div
+                  <View
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     style="bg-[#043b69] text-white rounded-full w-6 h-6 flex items-center justify-center text-xs"
                   >
                     {chat.unread}
-                  </motion.div>
+                  </View>
                 )}
               </View>
             </Card>
-          </motion.div>
+          </View>
           ))
         )}
       </View>

@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import { motion, AnimatePresence } from "motion/react";
+
 import { ArrowLeft, DollarSign, CheckCircle2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -51,7 +51,7 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
@@ -66,10 +66,10 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
           </motion.button>
           <Text style={{fontSize:20,fontWeight:"600"}}>Withdraw Funds</Text>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           style="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6"
@@ -77,10 +77,10 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
           <Text style="text-blue-800 text-sm">
             Available Balance: <Text>$4,500</Text>
           </Text>
-        </motion.div>
+        </View>
 
         <View onSubmit={handleSubmit} style="space-y-6">
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
@@ -96,9 +96,9 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
                 style="pl-10 text-2xl h-14"
               />
             </View>
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -114,9 +114,9 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
                 <SelectItem value="paypal">PayPal</SelectItem>
               </SelectContent>
             </Select>
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
@@ -128,9 +128,9 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
               onChange={(e) => setFormData({ ...formData, accountNumber: e.target.value })}
               style="mt-2"
             />
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
@@ -140,9 +140,9 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
               placeholder="John Doe"
               style="mt-2"
             />
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -153,41 +153,41 @@ export function WithdrawFunds({ onBack, onNavigate, kycStatus = "pending" }: Wit
             >
               Confirm Withdrawal
             </Button>
-          </motion.div>
+          </View>
         </View>
       </View>
 
       {/* Success Modal */}
-      <AnimatePresence>
+      <>
         {showSuccess && (
-          <motion.div
+          <View
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-6"
           >
-            <motion.div
+            <View
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               style="bg-white rounded-2xl p-8 text-center max-w-sm"
             >
-              <motion.div
+              <View
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                 style="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
               >
                 <CheckCircle2 style="w-8 h-8 text-green-600" />
-              </motion.div>
+              </View>
               <Text style="mb-2">Withdrawal Successful!</Text>
               <Text style="text-gray-500">
                 Your withdrawal request has been submitted and will be processed within 24 hours.
               </Text>
-            </motion.div>
-          </motion.div>
+            </View>
+          </View>
         )}
-      </AnimatePresence>
+      </>
     </View>
   );
 }

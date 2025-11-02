@@ -53,7 +53,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
   return (
     <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`sticky top-0 z-10 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b p-4`}
@@ -83,19 +83,19 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
             Save
           </motion.button>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
         <View onSubmit={handleSubmit} style="space-y-6">
           {/* Profile Picture */}
-          <motion.div
+          <View
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
           >
             <Card style={`p-6 shadow-md ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
               <View style="flex flex-col items-center">
-                <motion.div
+                <View
                   whileHover={{ scale: 1.05 }}
                   style="relative cursor-pointer"
                 >
@@ -104,7 +104,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
                       JD
                     </AvatarFallback>
                   </Avatar>
-                  <motion.div
+                  <View
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     style={`absolute bottom-0 right-0 p-2 rounded-full ${
@@ -112,17 +112,17 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
                     } text-white shadow-lg cursor-pointer`}
                   >
                     <Camera style="w-4 h-4" />
-                  </motion.div>
-                </motion.div>
+                  </View>
+                </View>
                 <Text style={`text-sm mt-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   Click to change profile picture
                 </Text>
               </View>
             </Card>
-          </motion.div>
+          </View>
 
           {/* Personal Information */}
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -168,10 +168,10 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
                 </View>
               </View>
             </Card>
-          </motion.div>
+          </View>
 
           {/* Contact Information */}
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -219,10 +219,10 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
                 </View>
               </View>
             </Card>
-          </motion.div>
+          </View>
 
           {/* Submit Button */}
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -238,7 +238,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
             >
               {isLoading ? (
                 <View style="flex items-center gap-2">
-                  <motion.div
+                  <View
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     style="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
@@ -252,7 +252,7 @@ export function EditProfileScreen({ onBack, onSave }: EditProfileScreenProps) {
                 </>
               )}
             </Button>
-          </motion.div>
+          </View>
         </View>
       </View>
     </View>

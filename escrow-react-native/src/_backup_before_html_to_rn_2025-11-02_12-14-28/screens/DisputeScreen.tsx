@@ -80,7 +80,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
   return (
     <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`sticky top-0 z-10 ${
@@ -103,11 +103,11 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
           </View>
           <AlertTriangle style="w-6 h-6" />
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6 space-y-6">
         {/* Warning Card */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -131,10 +131,10 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Transaction Details */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -166,11 +166,11 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Dispute Form */}
         <View onSubmit={handleSubmit} style="space-y-6">
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -226,10 +226,10 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
                 </View>
               </View>
             </Card>
-          </motion.div>
+          </View>
 
           {/* Upload Evidence */}
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -240,7 +240,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
                 <Text style={isDark ? 'text-white' : ''}>Supporting Evidence (Optional)</Text>
               </View>
               
-              <motion.div
+              <View
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 style={`border-2 border-dashed p-8 text-center cursor-pointer transition-colors ${
@@ -256,7 +256,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
                 <Text style={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                   Images, PDFs, screenshots, chat logs, etc. (Max 10MB per file)
                 </Text>
-              </motion.div>
+              </View>
 
               <View style={`mt-4 p-3 rounded-lg ${
                 isDark ? 'bg-gray-700' : 'bg-blue-50'
@@ -267,10 +267,10 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
                 </Text>
               </View>
             </Card>
-          </motion.div>
+          </View>
 
           {/* Dispute Resolution Process */}
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -319,10 +319,10 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
                 </View>
               </View>
             </Card>
-          </motion.div>
+          </View>
 
           {/* Submit Button */}
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -341,7 +341,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
             >
               {isSubmitting ? (
                 <View style="flex items-center gap-2">
-                  <motion.div
+                  <View
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     style="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
@@ -368,7 +368,7 @@ export function DisputeScreen({ transaction, onBack, onSubmit }: DisputeScreenPr
             >
               Cancel
             </Button>
-          </motion.div>
+          </View>
         </View>
       </View>
     </View>

@@ -29,7 +29,7 @@ export function NotificationDetails({ notification, onBack }: NotificationDetail
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6"
@@ -49,10 +49,10 @@ export function NotificationDetails({ notification, onBack }: NotificationDetail
             </View>
           </View>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -101,7 +101,7 @@ export function NotificationDetails({ notification, onBack }: NotificationDetail
               Close
             </Button>
           </View>
-        </motion.div>
+        </View>
       </View>
     </View>
   );

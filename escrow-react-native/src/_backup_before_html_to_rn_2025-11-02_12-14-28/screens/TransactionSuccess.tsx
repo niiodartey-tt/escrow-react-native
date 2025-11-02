@@ -78,13 +78,13 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
 
       {/* Background gradient circles */}
       <View style="absolute inset-0 overflow-hidden">
-        <motion.div
+        <View
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           style="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#043b69] rounded-full blur-3xl"
         />
-        <motion.div
+        <View
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.05 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
@@ -95,7 +95,7 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
       {/* Content */}
       <View style="relative z-20 h-full flex flex-col items-center justify-center p-6">
         {/* Success Icon */}
-        <motion.div
+        <View
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ 
@@ -107,14 +107,14 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
           style="mb-8"
         >
           <View style="relative">
-            <motion.div
+            <View
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.3 }}
               style="absolute inset-0 bg-green-500/20 rounded-full blur-2xl"
             />
             <View style="relative w-24 h-24 bg-green-500 rounded-full flex items-center justify-center">
-              <motion.div
+              <View
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ 
@@ -125,13 +125,13 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
                 }}
               >
                 <CheckCircle style="w-16 h-16 text-white" strokeWidth={2.5} />
-              </motion.div>
+              </View>
             </View>
           </View>
-        </motion.div>
+        </View>
 
         {/* Success Message */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -141,10 +141,10 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
           <Text style="text-gray-500 max-w-sm">
             {successDescription}
           </Text>
-        </motion.div>
+        </View>
 
         {/* Transaction Details Card */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
@@ -182,10 +182,10 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Action Buttons */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
@@ -233,7 +233,7 @@ export function TransactionSuccess({ transaction, action, onNavigate }: Transact
               Share
             </Button>
           </View>
-        </motion.div>
+        </View>
       </View>
     </View>
   );

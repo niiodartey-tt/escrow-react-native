@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import { motion, AnimatePresence } from "motion/react";
+
 import { ShoppingCart, Store, X } from "lucide-react";
 import { Card } from "./ui/card";
 
@@ -11,17 +11,17 @@ interface TransactionTypeModalProps {
 
 export function TransactionTypeModal({ isOpen, onClose, onSelect }: TransactionTypeModalProps) {
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <>
-          <motion.div
+          <View
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             exit={{ opacity: 0 }}
             style="fixed inset-0 bg-black z-40"
             onPress={onClose}
           />
-          <motion.div
+          <View
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
@@ -43,7 +43,7 @@ export function TransactionTypeModal({ isOpen, onClose, onSelect }: TransactionT
               <Text style="text-gray-500 dark:text-gray-400 mb-5 sm:mb-6 text-sm sm:text-base">Choose whether you want to buy or sell</Text>
 
               <View style="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
-                <motion.div
+                <View
                   whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(10, 87, 230, 0.2)" }}
                   whileTap={{ scale: 0.98 }}
                   onPress={() => {
@@ -62,9 +62,9 @@ export function TransactionTypeModal({ isOpen, onClose, onSelect }: TransactionT
                       </View>
                     </View>
                   </Card>
-                </motion.div>
+                </View>
 
-                <motion.div
+                <View
                   whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(16, 185, 129, 0.2)" }}
                   whileTap={{ scale: 0.98 }}
                   onPress={() => {
@@ -83,12 +83,12 @@ export function TransactionTypeModal({ isOpen, onClose, onSelect }: TransactionT
                       </View>
                     </View>
                   </Card>
-                </motion.div>
+                </View>
               </View>
             </View>
-          </motion.div>
+          </View>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 }

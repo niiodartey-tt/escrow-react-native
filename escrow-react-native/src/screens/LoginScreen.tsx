@@ -54,26 +54,26 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
     <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 overflow-y-auto">
       {/* Header */}
       <View style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6 sm:p-8 pb-12 sm:pb-16">
-        <motion.div
+        <View
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           style="max-w-md mx-auto"
         >
           <Text style="text-2xl sm:text-3xl mb-2">Welcome Back</Text>
           <Text style="text-sm opacity-80">Sign in to continue</Text>
-        </motion.div>
+        </View>
       </View>
 
       {/* Form Card */}
       <View style="max-w-md mx-auto px-4 sm:px-6 -mt-8">
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style="bg-white dark:bg-gray-800 shadow-lg p-5 sm:p-6"
         >
           <View onSubmit={handleSubmit} style="space-y-5">
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
@@ -91,9 +91,9 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
                   required
                 />
               </View>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
@@ -118,9 +118,9 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
                   {showPassword ? <EyeOff style="w-5 h-5" /> : <Eye style="w-5 h-5" />}
                 </TouchableOpacity>
               </View>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -145,9 +145,9 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
               >
                 Forgot Password?
               </TouchableOpacity>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -158,11 +158,11 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
               >
                 Sign In
               </Button>
-            </motion.div>
+            </View>
 
             {/* Biometric Login */}
             {biometricAvailable && biometricEnrolled && (
-              <motion.div
+              <View
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55 }}
@@ -183,13 +183,13 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
                   <Fingerprint style="w-5 h-5" />
                   Sign in with Biometrics
                 </Button>
-              </motion.div>
+              </View>
             )}
           </View>
-        </motion.div>
+        </View>
 
         {/* Sign Up Link */}
-        <motion.div
+        <View
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
@@ -204,7 +204,7 @@ export function LoginScreen({ onLogin, onNavigate }: LoginScreenProps) {
               Sign Up
             </TouchableOpacity>
           </Text>
-        </motion.div>
+        </View>
       </View>
 
       {/* OTP Verification Modal */}

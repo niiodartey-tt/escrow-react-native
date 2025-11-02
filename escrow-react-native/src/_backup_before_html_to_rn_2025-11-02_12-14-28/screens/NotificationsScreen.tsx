@@ -199,7 +199,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
 
   return (
     <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`text-white p-6 ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'}`}
@@ -249,7 +249,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
 
           {/* Filters */}
           {showFilters && (
-            <motion.div
+            <View
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -272,14 +272,14 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
                   {option.label}
                 </motion.button>
               ))}
-            </motion.div>
+            </View>
           )}
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6 space-y-3">
         {filteredNotifications.length === 0 ? (
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
@@ -293,7 +293,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
                 ? "Try adjusting your search or filters" 
                 : "You're all caught up!"}
             </Text>
-          </motion.div>
+          </View>
         ) : (
           <>
             {filteredNotifications.map((notification, index) => {
@@ -301,7 +301,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
           const accentColor = getAccentColor(notification.type);
 
           return (
-            <motion.div
+            <View
               key={notification.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -326,7 +326,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
                         {notification.title}
                       </View>
                       {!notification.read && (
-                        <motion.div
+                        <View
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           style="w-2 h-2 bg-[#043b69] rounded-full shrink-0 ml-2"
@@ -340,7 +340,7 @@ export function NotificationsScreen({ onBack, onNavigate }: NotificationsScreenP
                   </View>
                 </View>
               </Card>
-            </motion.div>
+            </View>
           );
             })}
           </>

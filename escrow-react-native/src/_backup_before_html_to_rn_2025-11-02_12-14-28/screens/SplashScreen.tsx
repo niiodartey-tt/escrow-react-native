@@ -8,7 +8,7 @@ interface SplashScreenProps {
 
 export function SplashScreen({ onComplete }: SplashScreenProps) {
   return (
-    <motion.div
+    <View
       style="fixed inset-0 bg-gradient-to-b from-[#043b69] to-[#032d51] flex flex-col items-center justify-center px-4"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
@@ -18,7 +18,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         setTimeout(() => onComplete(), 2000);
       }}
     >
-      <motion.div
+      <View
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -31,7 +31,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           <Text style="text-white mb-2 text-2xl sm:text-3xl">SecureEscrow</Text>
           <Text style="text-white/70 text-sm sm:text-base">Secure Escrow for Every Deal</Text>
         </View>
-      </motion.div>
-    </motion.div>
+      </View>
+    </View>
   );
 }

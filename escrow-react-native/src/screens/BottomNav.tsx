@@ -59,7 +59,7 @@ export function BottomNav({ activeScreen, onNavigate, onCreateTransaction }: Bot
                 {item.label}
               </Text>
               {isActive && (
-                <motion.div
+                <View
                   layoutId="activeIndicator"
                   style="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#043b69] dark:bg-blue-400"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}

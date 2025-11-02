@@ -37,7 +37,7 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
 
   return (
     <View style="h-screen bg-[#F9FAFB] dark:bg-gray-900 pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-5 sm:p-6 z-10"
@@ -57,11 +57,11 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
             </Text>
           </View>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
         <View onSubmit={handleSubmit} style="space-y-6">
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
@@ -75,9 +75,9 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               style="mt-2"
             />
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -94,9 +94,9 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
                 <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
@@ -116,9 +116,9 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
                 ? "Enter the username or phone number of the seller"
                 : "Enter the username or phone number of the buyer"}
             </Text>
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
@@ -139,9 +139,9 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
                 ? "This amount will be held in escrow until you confirm receipt"
                 : "You'll receive this amount once the buyer confirms receipt"}
             </Text>
-          </motion.div>
+          </View>
 
-          <motion.div
+          <View
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
@@ -155,16 +155,16 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               style="mt-2 min-h-[100px]"
             />
-          </motion.div>
+          </View>
 
           {!isBuying && (
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
             >
               <Label>Upload Images (Optional)</Label>
-              <motion.div
+              <View
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 style="mt-2 border-2 border-dashed border-gray-300 p-8 text-center cursor-pointer hover:border-[#043b69] transition-colors"
@@ -172,11 +172,11 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
                 <Upload style="w-8 h-8 mx-auto mb-2 text-gray-400" />
                 <Text style="text-gray-500">Click to upload or drag and drop</Text>
                 <Text style="text-xs text-gray-400 mt-1">PNG, JPG up to 10MB</Text>
-              </motion.div>
-            </motion.div>
+              </View>
+            </View>
           )}
 
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
@@ -188,7 +188,7 @@ export function CreateTransaction({ transactionType, onBack, onSubmit }: CreateT
             >
               {isBuying ? "Create Escrow Transaction" : "Create Escrow Listing"}
             </Button>
-          </motion.div>
+          </View>
         </View>
       </View>
     </View>

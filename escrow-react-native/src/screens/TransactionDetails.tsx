@@ -163,7 +163,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6"
@@ -181,11 +181,11 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
             <Text style="text-xs opacity-80">{transaction.id}</Text>
           </View>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6 space-y-4">
         {/* Main Transaction Card */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -216,10 +216,10 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Progress Timeline */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -232,7 +232,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
             <Progress value={progressValue} style="mb-6" />
             <View style="space-y-4">
               {steps.map((step, index) => (
-                <motion.div
+                <View
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -258,14 +258,14 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
                       <Text style="text-xs text-gray-500 mt-1">{step.date}</Text>
                     )}
                   </View>
-                </motion.div>
+                </View>
               ))}
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Participants */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -273,7 +273,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
           <Card style="p-6 shadow-md">
             <Text style="mb-4">Participants</Text>
             <View style="space-y-4">
-              <motion.div 
+              <View 
                 whileHover={{ x: 4 }}
                 style="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
               >
@@ -287,9 +287,9 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
                   </View>
                 </View>
                 <Badge variant="outline" style="text-xs">You</Badge>
-              </motion.div>
+              </View>
               
-              <motion.div 
+              <View 
                 whileHover={{ x: 4 }}
                 style="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
               >
@@ -309,13 +309,13 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
                 >
                   Message
                 </motion.button>
-              </motion.div>
+              </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Payment & Fees */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -352,10 +352,10 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Delivery & Additional Info */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -388,10 +388,10 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
               )}
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Terms & Conditions */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
@@ -405,10 +405,10 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
               {transaction.terms || "Item must be as described. Buyer has 3 days to inspect and confirm receipt. Seller must ship within 2 business days of escrow confirmation."}
             </Text>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Activity Log */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
@@ -417,7 +417,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
             <Text style="mb-4">Activity Log</Text>
             <View style="space-y-3">
               {activityLog.map((activity, index) => (
-                <motion.div
+                <View
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -430,14 +430,14 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
                       {activity.date} • {activity.user}
                     </View>
                   </View>
-                </motion.div>
+                </View>
               ))}
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Download Receipt */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
@@ -450,10 +450,10 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
             <Download style="w-4 h-4" />
             Download Receipt
           </Button>
-        </motion.div>
+        </View>
 
         {/* Actions */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
@@ -489,10 +489,10 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
               </View>
             </View>
           )}
-        </motion.div>
+        </View>
 
         {/* Info Banner */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0 }}
@@ -506,7 +506,7 @@ export function TransactionDetails({ transaction, onBack, onNavigate }: Transact
               </Text>
             </View>
           </View>
-        </motion.div>
+        </View>
 
         {/* Chat Button */}
         <motion.button

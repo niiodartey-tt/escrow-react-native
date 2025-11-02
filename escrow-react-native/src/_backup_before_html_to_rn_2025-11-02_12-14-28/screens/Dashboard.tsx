@@ -130,7 +130,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
     <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header with Wallet Balance */}
       <View style="relative">
-        <motion.div
+        <View
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           style={`p-4 sm:p-6 pb-20 sm:pb-24 text-white ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'}`}
@@ -147,14 +147,14 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
             >
               <Bell style="w-5 h-5 sm:w-6 sm:h-6" />
               {unreadNotifications > 0 && (
-                <motion.div
+                <View
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 500 }}
                   style="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
                 >
                   {unreadNotifications}
-                </motion.div>
+                </View>
               )}
             </motion.button>
           </View>
@@ -162,24 +162,24 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
           <View style="grid grid-cols-2 gap-3 sm:gap-4">
             <View>
               <Text style="text-white/80 text-xs sm:text-sm mb-1">Wallet Balance</Text>
-              <motion.div 
+              <View 
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 style="text-xl sm:text-2xl"
               >
                 $4,500.00
-              </motion.div>
+              </View>
             </View>
             <View>
               <Text style="text-white/80 text-xs sm:text-sm mb-1">Escrow Balance</Text>
               <View style="text-xl sm:text-2xl">$200.00</View>
             </View>
           </View>
-        </motion.div>
+        </View>
 
         {/* Stats Grid - Overlay */}
         <View style="px-4 sm:px-6 -mt-14 sm:-mt-16 relative z-10 rounded-[0px]">
-          <motion.div 
+          <View 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="bg-white shadow-lg p-5"
@@ -189,7 +189,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                 const Icon = stat.icon;
                 const isBottomRow = index >= 2;
                 return (
-                  <motion.div
+                  <View
                     key={stat.label}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -206,17 +206,17 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                       <View style="text-sm text-gray-500">{stat.label}</View>
                       <View style="text-xl">{stat.value}</View>
                     </View>
-                  </motion.div>
+                  </View>
                 );
               })}
             </View>
-          </motion.div>
+          </View>
         </View>
       </View>
 
       {/* KYC Banner */}
       {kycStatus !== "verified" && (
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           style="px-6 mt-6"
@@ -269,27 +269,27 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
       )}
 
       {/* Action Buttons */}
       <View style="px-6 mb-8 mt-6 flex gap-3">
-        <motion.div whileTap={{ scale: 0.98 }} style="flex-1">
+        <View whileTap={{ scale: 0.98 }} style="flex-1">
           <Button
             onPress={() => onNavigate("wallet")}
             style="w-full bg-[#043b69] hover:bg-[#032d51] shadow-lg h-12"
           >
             + Top up wallet
           </Button>
-        </motion.div>
-        <motion.div whileTap={{ scale: 0.98 }} style="flex-1">
+        </View>
+        <View whileTap={{ scale: 0.98 }} style="flex-1">
           <Button
             onPress={() => onNavigate("withdraw")}
             style="w-full bg-black hover:bg-gray-900 text-white shadow-lg h-12"
           >
             Withdraw
           </Button>
-        </motion.div>
+        </View>
       </View>
 
       {/* Recent Transactions */}
@@ -318,7 +318,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
         
         {/* Search and Filter */}
         {showFilters && (
-          <motion.div
+          <View
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -358,22 +358,22 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                 </motion.button>
               ))}
             </View>
-          </motion.div>
+          </View>
         )}
 
         <View style="space-y-4">
           {recentTransactions.length === 0 ? (
-            <motion.div
+            <View
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               style="text-center py-8"
             >
               <Text style="text-gray-500">No transactions found</Text>
               <Text style="text-sm text-gray-400">Try adjusting your filters</Text>
-            </motion.div>
+            </View>
           ) : (
             recentTransactions.map((transaction, index) => (
-              <motion.div
+              <View
                 key={transaction.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -412,7 +412,7 @@ export function Dashboard({ onNavigate, kycStatus = "pending" }: DashboardProps)
                     </Button>
                   </View>
                 </Card>
-              </motion.div>
+              </View>
             ))
           )}
         </View>

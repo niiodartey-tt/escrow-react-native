@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import { motion, AnimatePresence } from "motion/react";
+
 import { Shield, Lock, Zap, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
@@ -60,7 +60,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
       {/* Content */}
       <View style="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-8">
         <AnimatePresence mode="wait">
-          <motion.div
+          <View
             key={currentSlide}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -69,7 +69,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             style="text-center max-w-md w-full"
           >
             {/* Icon */}
-            <motion.div
+            <View
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
@@ -89,7 +89,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
                   );
                 })()}
               </View>
-            </motion.div>
+            </View>
 
             {/* Title */}
             <motion.h2
@@ -110,8 +110,8 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             >
               {slides[currentSlide].description}
             </motion.p>
-          </motion.div>
-        </AnimatePresence>
+          </View>
+        </>
       </View>
 
       {/* Navigation */}
@@ -120,7 +120,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           {/* Dots */}
           <View style="flex justify-center gap-2 mb-5 sm:mb-6">
             {slides.map((_, index) => (
-              <motion.div
+              <View
                 key={index}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -135,7 +135,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           </View>
 
           {/* Next Button */}
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -147,7 +147,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
               {currentSlide < slides.length - 1 ? "Next" : "Get Started"}
               <ArrowRight style="w-4 h-4" />
             </Button>
-          </motion.div>
+          </View>
         </View>
       </View>
     </View>

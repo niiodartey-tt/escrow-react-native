@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import { motion, AnimatePresence } from "motion/react";
+
 import { X, Lock, Fingerprint } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useRef, useEffect } from "react";
@@ -82,11 +82,11 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
   }[action] || "Confirm Action";
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <View
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -96,7 +96,7 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
 
           {/* Modal */}
           <View style="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div
+            <View
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -128,7 +128,7 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
               {/* Content */}
               <View style="p-5 sm:p-6 -mt-6">
                 {/* Transaction Summary Card */}
-                <motion.div
+                <View
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
@@ -148,10 +148,10 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
                       </View>
                     </>
                   )}
-                </motion.div>
+                </View>
 
                 {/* PIN Input */}
-                <motion.div
+                <View
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -189,10 +189,10 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
                   <Text style="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
                     For demo purposes, use PIN: 1234
                   </Text>
-                </motion.div>
+                </View>
 
                 {/* Actions */}
-                <motion.div
+                <View
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
@@ -208,7 +208,7 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
 
                   {/* Biometric Alternative */}
                   {biometricAvailable && biometricEnrolled && (
-                    <motion.div
+                    <View
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.35 }}
@@ -229,7 +229,7 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
                         <Fingerprint style="w-5 h-5" />
                         Use Biometrics
                       </Button>
-                    </motion.div>
+                    </View>
                   )}
 
                   <Button
@@ -240,12 +240,12 @@ export function PinConfirmation({ isOpen, onClose, onConfirm, action, transactio
                   >
                     Cancel
                   </Button>
-                </motion.div>
+                </View>
               </View>
-            </motion.div>
+            </View>
           </View>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 }

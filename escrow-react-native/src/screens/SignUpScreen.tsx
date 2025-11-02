@@ -50,26 +50,26 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
           >
             <ArrowLeft style="w-5 h-5" />
           </motion.button>
-          <motion.div
+          <View
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <Text style="text-2xl sm:text-3xl mb-2">Create Account</Text>
             <Text style="text-sm opacity-80">Join us today</Text>
-          </motion.div>
+          </View>
         </View>
       </View>
 
       {/* Form */}
       <View style="max-w-md mx-auto px-4 sm:px-6 py-5 sm:py-6">
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style="bg-white dark:bg-gray-800 shadow-lg p-5 sm:p-6"
         >
           <View onSubmit={handleSubmit} style="space-y-4">
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
@@ -87,9 +87,9 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                   required
                 />
               </View>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.25 }}
@@ -108,9 +108,9 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                 />
               </View>
               <Text style="text-xs text-gray-500 mt-1">This will be used for transactions</Text>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
@@ -128,9 +128,9 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                   required
                 />
               </View>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.35 }}
@@ -149,9 +149,9 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                 />
               </View>
               <Text style="text-xs text-gray-500 mt-1">Can also be used for transactions</Text>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -176,9 +176,9 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                   {showPassword ? <EyeOff style="w-5 h-5" /> : <Eye style="w-5 h-5" />}
                 </TouchableOpacity>
               </View>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.45 }}
@@ -203,9 +203,9 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                   {showConfirmPassword ? <EyeOff style="w-5 h-5" /> : <Eye style="w-5 h-5" />}
                 </TouchableOpacity>
               </View>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 }}
@@ -224,9 +224,9 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
                 <Text style="text-[#043b69] hover:underline">Terms of Service</Text> and{" "}
                 <Text style="text-[#043b69] hover:underline">Privacy Policy</Text>
               </Text>
-            </motion.div>
+            </View>
 
-            <motion.div
+            <View
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55 }}
@@ -237,12 +237,12 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
               >
                 Create Account
               </Button>
-            </motion.div>
+            </View>
           </View>
-        </motion.div>
+        </View>
 
         {/* Sign In Link */}
-        <motion.div
+        <View
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
@@ -257,7 +257,7 @@ export function SignUpScreen({ onSignUp, onBack }: SignUpScreenProps) {
               Sign In
             </TouchableOpacity>
           </Text>
-        </motion.div>
+        </View>
       </View>
     </View>
   );

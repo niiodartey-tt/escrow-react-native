@@ -99,7 +99,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
   return (
     <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`sticky top-0 z-10 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b p-4`}
@@ -123,18 +123,18 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
             <Settings style="w-5 h-5" />
           </motion.button>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
         {/* Profile Header Card */}
-        <motion.div
+        <View
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: "spring", stiffness: 200 }}
         >
           <Card style={`p-6 shadow-lg mb-6 ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
             <View style="flex items-start gap-4 mb-4">
-              <motion.div
+              <View
                 whileHover={{ scale: 1.05 }}
                 style="relative"
               >
@@ -144,19 +144,19 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                   </AvatarFallback>
                 </Avatar>
                 <View style="absolute -bottom-1 -right-1 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full w-6 h-6" />
-              </motion.div>
+              </View>
               
               <View style="flex-1">
                 <View style="flex items-center gap-2 mb-1">
                   <Text style={isDark ? 'text-white' : ''}>{profileData.name}</Text>
                   {kycStatus === "verified" && (
-                    <motion.div
+                    <View
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring" }}
                     >
                       <CheckCircle2 style="w-5 h-5 text-green-600 dark:text-green-400" />
-                    </motion.div>
+                    </View>
                   )}
                 </View>
                 <Text style={`text-sm mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
@@ -209,10 +209,10 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
               </motion.button>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Wallet Balance Card */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -247,10 +247,10 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Stats Grid */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -259,7 +259,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <motion.div
+              <View
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -274,13 +274,13 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                   <View style={`text-2xl mb-1 ${isDark ? 'text-white' : ''}`}>{stat.value}</View>
                   <View style={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{stat.label}</View>
                 </Card>
-              </motion.div>
+              </View>
             );
           })}
-        </motion.div>
+        </View>
 
         {/* Tabs Section */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -366,7 +366,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
               {achievements.map((achievement, index) => {
                 const Icon = achievement.icon;
                 return (
-                  <motion.div
+                  <View
                     key={achievement.title}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -388,14 +388,14 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                         )}
                       </View>
                     </Card>
-                  </motion.div>
+                  </View>
                 );
               })}
             </TabsContent>
 
             <TabsContent value="activity" style="space-y-3">
               {recentActivity.map((activity, index) => (
-                <motion.div
+                <View
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -421,14 +421,14 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
                       </View>
                     </View>
                   </Card>
-                </motion.div>
+                </View>
               ))}
             </TabsContent>
           </Tabs>
-        </motion.div>
+        </View>
 
         {/* Action Buttons */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -450,7 +450,7 @@ export function ProfileScreen({ onBack, onNavigate, kycStatus = "pending" }: Pro
             <LogOut style="w-4 h-4 mr-2" />
             Logout
           </Button>
-        </motion.div>
+        </View>
       </View>
     </View>
   );

@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import { motion, AnimatePresence } from "motion/react";
+
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -200,7 +200,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
   return (
     <View style={`h-screen pb-0 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
       {/* Header */}
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`sticky top-0 z-10 ${
@@ -228,12 +228,12 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
         <View style="max-w-md mx-auto">
           <Progress value={progress} style="h-2 bg-white/20" />
         </View>
-      </motion.div>
+      </View>
 
       {/* Content */}
       <View style="max-w-md mx-auto p-6">
         {/* Info Banner */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           style="mb-6"
@@ -256,12 +256,12 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               </View>
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         <AnimatePresence mode="wait">
           {/* Step 1: Personal Information */}
           {currentStep === 1 && (
-            <motion.div
+            <View
               key="step1"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -346,12 +346,12 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                   </View>
                 </View>
               </Card>
-            </motion.div>
+            </View>
           )}
 
           {/* Step 2: Address Information */}
           {currentStep === 2 && (
-            <motion.div
+            <View
               key="step2"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -442,12 +442,12 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                   </View>
                 </View>
               </Card>
-            </motion.div>
+            </View>
           )}
 
           {/* Step 3: Identity Verification */}
           {currentStep === 3 && (
-            <motion.div
+            <View
               key="step3"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -518,12 +518,12 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                   </View>
                 </View>
               </Card>
-            </motion.div>
+            </View>
           )}
 
           {/* Step 4: Document Upload */}
           {currentStep === 4 && (
-            <motion.div
+            <View
               key="step4"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -701,12 +701,12 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
                   </View>
                 </View>
               </Card>
-            </motion.div>
+            </View>
           )}
-        </AnimatePresence>
+        </>
 
         {/* Navigation Buttons */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -736,7 +736,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
             >
               {isSubmitting ? (
                 <View style="flex items-center gap-2">
-                  <motion.div
+                  <View
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     style="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
@@ -751,7 +751,7 @@ export function KYCVerificationScreen({ onBack, onComplete }: KYCVerificationScr
               )}
             </Button>
           )}
-        </motion.div>
+        </View>
       </View>
     </View>
   );

@@ -50,7 +50,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style="sticky top-0 bg-white border-b border-gray-200 p-4 z-10"
@@ -65,11 +65,11 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
           </motion.button>
           <Text style={{fontSize:20,fontWeight:"600"}}>Fund Wallet</Text>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6">
         {/* Amount Input */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -86,7 +86,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
               style="pl-10 text-2xl h-14"
             />
           </View>
-        </motion.div>
+        </View>
 
         {/* Payment Methods */}
         <View style="mb-6">
@@ -97,7 +97,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
               const isSelected = selectedMethod === method.id;
               
               return (
-                <motion.div
+                <View
                   key={method.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -126,7 +126,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
                         isSelected ? "border-[#043b69] bg-[#043b69]" : "border-gray-300"
                       } flex items-center justify-center`}>
                         {isSelected && (
-                          <motion.div
+                          <View
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             style="w-2 h-2 bg-white rounded-full"
@@ -135,7 +135,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
                       </View>
                     </View>
                   </Card>
-                </motion.div>
+                </View>
               );
             })}
           </View>
@@ -143,7 +143,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
 
         {/* Payment Details Form */}
         {selectedMethod && (
-          <motion.div
+          <View
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             transition={{ type: "spring", stiffness: 200 }}
@@ -185,11 +185,11 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
                 </View>
               </>
             )}
-          </motion.div>
+          </View>
         )}
 
         {/* Confirm Button */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -200,7 +200,7 @@ export function FundWallet({ onBack, onNavigate, kycStatus = "pending" }: FundWa
           >
             Confirm Payment
           </Button>
-        </motion.div>
+        </View>
       </View>
     </View>
   );

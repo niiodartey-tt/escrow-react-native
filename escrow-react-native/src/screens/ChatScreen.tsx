@@ -54,7 +54,7 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
   return (
     <View style={`h-screen ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'} flex flex-col`}>
       {/* Header */}
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b p-4`}
@@ -82,13 +82,13 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
             {recentTransaction?.id || chat?.transactionId || "ESC-10234"}
           </Badge>
         </View>
-      </motion.div>
+      </View>
 
       {/* Messages */}
       <View style="flex-1 overflow-y-auto p-4">
         <View style="max-w-md mx-auto space-y-4">
           {messages.map((msg, index) => (
-            <motion.div
+            <View
               key={msg.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -127,11 +127,11 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
                   {msg.time}
                 </Text>
               </View>
-            </motion.div>
+            </View>
           ))}
           
           {/* Typing Indicator */}
-          <motion.div
+          <View
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             style="flex justify-start"
@@ -139,7 +139,7 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
             <View style={`${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white'} shadow-sm rounded-2xl px-4 py-3`}>
               <View style="flex gap-1">
                 {[0, 1, 2].map((i) => (
-                  <motion.div
+                  <View
                     key={i}
                     animate={{ y: [0, -5, 0] }}
                     transition={{
@@ -152,12 +152,12 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
                 ))}
               </View>
             </View>
-          </motion.div>
+          </View>
         </View>
       </View>
 
       {/* Input */}
-      <motion.div
+      <View
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         style={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-t p-4`}
@@ -176,7 +176,7 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
             placeholder="Type a message..."
             style={`flex-1 ${isDark ? 'bg-gray-700 border-gray-600 text-white' : ''}`}
           />
-          <motion.div whileTap={{ scale: 0.9 }}>
+          <View whileTap={{ scale: 0.9 }}>
             <Button
               onPress={handleSend}
               style={`rounded-full h-10 w-10 p-0 ${
@@ -187,9 +187,9 @@ export function ChatScreen({ chat, onBack, recentTransaction }: ChatScreenProps)
             >
               <Send style="w-5 h-5" />
             </Button>
-          </motion.div>
+          </View>
         </View>
-      </motion.div>
+      </View>
     </View>
   );
 }

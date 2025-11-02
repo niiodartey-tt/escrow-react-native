@@ -89,7 +89,7 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
 
   return (
     <View style={`h-screen pb-24 overflow-y-auto ${isDark ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
-      <motion.div
+      <View
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style={`p-6 text-white ${isDark ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-[#043b69] to-[#032d51]'}`}
@@ -107,11 +107,11 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
             <Text style="text-xs opacity-80">Manage your preferences</Text>
           </View>
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6 space-y-6">
         {/* Appearance */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -141,10 +141,10 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
               />
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Notifications */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -180,10 +180,10 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
               />
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Security */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -217,10 +217,10 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
               />
             </View>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Preferences */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -259,10 +259,10 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
               <ChevronRight style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-400'}`} />
             </motion.button>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Help & Support */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -293,10 +293,10 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
               <ChevronRight style={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-400'}`} />
             </motion.button>
           </Card>
-        </motion.div>
+        </View>
 
         {/* Logout */}
-        <motion.div
+        <View
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
@@ -309,7 +309,7 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
             <LogOut style="w-4 h-4" />
             Logout
           </Button>
-        </motion.div>
+        </View>
       </View>
 
       {/* Logout Confirmation Dialog */}

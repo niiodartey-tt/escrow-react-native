@@ -191,7 +191,7 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
 
   return (
     <View style="h-screen bg-[#F9FAFB] pb-24 overflow-y-auto">
-      <motion.div
+      <View
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         style="bg-gradient-to-br from-[#043b69] to-[#032d51] text-white p-6"
@@ -241,7 +241,7 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
 
           {/* Filters */}
           {showFilters && (
-            <motion.div
+            <View
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -264,14 +264,14 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
                   {option.label}
                 </motion.button>
               ))}
-            </motion.div>
+            </View>
           )}
         </View>
-      </motion.div>
+      </View>
 
       <View style="max-w-md mx-auto p-6 space-y-4">
         {filteredTransactions.length === 0 ? (
-          <motion.div
+          <View
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style="text-center py-12"
@@ -280,10 +280,10 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
             <Text style="text-gray-500">
               {searchQuery ? "Try adjusting your search or filters" : "No transactions available"}
             </Text>
-          </motion.div>
+          </View>
         ) : (
           filteredTransactions.map((transaction, index) => (
-            <motion.div
+            <View
               key={transaction.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -325,7 +325,7 @@ export function TransactionHistory({ onBack, onNavigate }: TransactionHistoryPro
                   </Button>
                 </View>
               </Card>
-            </motion.div>
+            </View>
           ))
         )}
       </View>
